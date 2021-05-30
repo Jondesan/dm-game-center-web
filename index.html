@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+
+
+<html>
+
+
+    <head>
+        <title>DnD e5 - DM Game Center</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Assistant&family=Nobile:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="script.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+        
+        <!-- <script>
+            window.onbeforeunload = function () {
+                return 'Do you really want to leave? You will lose all unsaved data!';
+            }
+        </script> -->
+
+    </head>
+
+    <body>
+    <div id="page-container">
+
+        <header>
+            <a href="index.html">
+                <img src="img/dnd-logo.png" alt="dnd-logo" id="dnd_logo">
+            </a>
+        <nav>
+            <ul class="navigation_items">
+                <li>
+                    <a><h1 class="ml12">Dungeon Master Game Center — DMGC</h1></a>
+                </li>
+            </ul>
+
+
+        </nav>
+        </header>
+
+        
+        <div class="slideshow-container">
+            
+                <div class="mySlides fade">
+                    <div class="numbertext">1 / 2</div>
+                    <div class="carousel-text">
+                        <h3>Tutustu kurssivalikoimaamme!</h3>
+                        <p>Ota selvää minkä aineiden kertauskursseja tarjoamme tänä vuonna ja suoriudu tulevista
+                            yo-kokeista kunnialla!
+                        </p>
+                        <a href="html/kurssit.html">Kurssit</a>
+                    </div>
+                  <img src="img/1_c.png" style="width:100%">
+                  <!-- <div class="text">Caption Text</div> -->
+                </div>
+                
+                <div class="mySlides fade">
+                    <div class="numbertext">2 / 2</div>
+                    <div class="carousel-text">
+                        <h3>Testiotsikko 2</h3>
+                        <p>Tähän jotain testitekstiä lisää.</p>
+                        <a href="#">Lue lisää!</a>
+                    </div>
+                  <img src="img/2_c.png" style="width:100%">
+                  <!-- <div class="text">Caption Two</div> -->
+                </div>
+                
+                
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                
+                <div class="carousel-dots" style="text-align:center">
+                    <span class="dot" onclick="currentSlide(1)"></span> 
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                </div>
+        </div>
+        <br>
+            
+            
+        <script>
+            var slideIndex = 1;
+            showSlides(slideIndex);
+                
+            function plusSlides(n) {
+                showSlides(slideIndex += n);
+            }
+            
+            function currentSlide(n) {
+                showSlides(slideIndex = n);
+            }
+            
+            function showSlides(n) {
+                var i;
+                var slides = document.getElementsByClassName("mySlides");
+                var dots = document.getElementsByClassName("dot");
+                if (n > slides.length) {slideIndex = 1}    
+                if (n < 1) {slideIndex = slides.length}
+                for (i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";  
+                }
+                for (i = 0; i < dots.length; i++) {
+                    dots[i].className = dots[i].className.replace(" active", "");
+                }
+                slides[slideIndex-1].style.display = "block";  
+                dots[slideIndex-1].className += " active";
+            }
+        </script>
+
+
+        <div class="main-content-container" 
+        style="
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        padding-bottom: 30ox;">
+            <div class="display-box">
+                <div class="main_console_wrapper">
+                    <div class="console_container">
+                        <div class="console_tab_bar">
+                            <ul class="console_tab_list">
+                                <li><a href="#">Campaign map</a></li>
+                                <li><a href="#" 
+                                    style="border-radius: 3px 5px 0 0;">+</a></li>
+                            </ul>
+                        </div>
+                        <iframe class="main_console" 
+                        src="">
+                            
+                        </iframe>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="display-box">
+                <div class="character-creation-container">
+                    <div id="character-creation-headbar-container"
+                    style="
+                    display: flex;
+                    flex-direction: row;">
+                        <div id="character-creation-name-input-field-container">
+                            <input type="text" id="new-character-name" value="name...">
+                            <br>
+                            <p style="margin-top: 4px; font-size: 8pt;">Character name</p>
+                        </div>
+                        
+                        <div id="character-creation-headbar-misc-info-container">
+                            <input type="text" id="new-character-class" value="class...">
+                            <br>
+                            <p style="margin-top: 4px; font-size: 8pt;">Character class</p>
+                        </div>
+                    </div>
+                    
+                    <div id="character-creation-column-container"
+                    style="
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    justify-content: space-evenly;
+                    align-content: stretch;">
+                        <div id="character-creation-column-one">
+                            
+                            <div id="cc-column-one-upper">
+
+                                <div id="ability-score-column">
+                                    <div    id="strength-score-container"
+                                            class="ability-score-container">
+                                        <p class="ability-score-title">strength</p>
+                                            <input type="text"
+                                            value="+3"
+                                            class="ability-score-amplifier-value-input"
+                                            id="strength-score-amplifier-value-input">
+                                        <div    id="strength-score-base-container"
+                                                class="ability-score-base-container">
+                                            <input type="text"
+                                            value="16"
+                                            class="ability-score-base-value-input"
+                                            id="strength-score-base-value-input">
+                                        </div>
+                                    </div>
+
+                                    <div    id="dexterity-score-container"
+                                            class="ability-score-container">
+                                        <p class="ability-score-title">dexterity</p>
+                                            <input type="text"
+                                            value="+3"
+                                            class="ability-score-amplifier-value-input"
+                                            id="dexterity-score-amplifier-value-input">
+                                        <div    id="dexterity-score-base-container"
+                                                class="ability-score-base-container">
+                                            <input  type="text"
+                                                    value="16"
+                                                    class="ability-score-base-value-input"
+                                                    id="dexterity-score-base-value-input">
+                                        </div>
+                                    </div>
+
+                                    <div    id="constitution-score-container"
+                                            class="ability-score-container">
+                                        <p class="ability-score-title">constitution</p>
+                                            <input  type="text"
+                                                    value="+3"
+                                                    class="ability-score-amplifier-value-input"
+                                                    id="constitution-score-amplifier-value-input">
+                                        <div    id="constitution-score-base-container"
+                                                class="ability-score-base-container">
+                                            <input  type="text"
+                                                    value="16"
+                                                    class="ability-score-base-value-input"
+                                                    id="constitution-score-base-value-input">
+                                        </div>
+                                    </div>
+
+                                    <div    id="intelligence-score-container"
+                                            class="ability-score-container">
+                                        <p class="ability-score-title">intelligence</p>
+                                            <input  type="text"
+                                                    value="+3"
+                                                    class="ability-score-amplifier-value-input"
+                                                    id="intelligence-score-amplifier-value-input">
+                                        <div    id="intelligence-score-base-container"
+                                                class="ability-score-base-container">
+                                            <input  type="text"
+                                                    value="16"
+                                                    class="ability-score-base-value-input"
+                                                    id="intelligence-score-base-value-input">
+                                        </div>
+                                    </div>
+
+                                    <div    id="wisdom-score-container"
+                                            class="ability-score-container">
+                                        <p class="ability-score-title">wisdom</p>
+                                            <input  type="text"
+                                                    value="+3"
+                                                    class="ability-score-amplifier-value-input"
+                                                    id="wisdom-score-amplifier-value-input">
+                                        <div    id="wisdom-score-base-container"
+                                                class="ability-score-base-container">
+                                            <input  type="text"
+                                                    value="16"
+                                                    class="ability-score-base-value-input"
+                                                    id="wisdom-score-base-value-input">
+                                        </div>
+                                    </div>
+
+                                    <div    id="charisma-score-container"
+                                            class="ability-score-container">
+                                        <p class="ability-score-title">charisma</p>
+                                            <input  type="text"
+                                                    value="+3"
+                                                    class="ability-score-amplifier-value-input"
+                                                    id="charisma-score-amplifier-value-input">
+                                        <div    id="charisma-score-base-container"
+                                                class="ability-score-base-container">
+                                            <input  type="text"
+                                                    value="16"
+                                                    class="ability-score-base-value-input"
+                                                    id="charisma-score-base-value-input">
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div id="cc-column-one-second-part">
+
+                                    <div id="inspiration-input-container">
+                                        <input  type="text"
+                                                id="inspiration-input-value"
+                                                value="0">
+                                        <div    id="inspiration-input-label">
+                                            <p>inspiration</p>
+                                        </div>
+                                    </div>
+
+                                    <div id="proficiency-bonus-input-container">
+                                        <input  type="text"
+                                                id="proficiency-bonus-input-value"
+                                                value="0">
+                                        <div    id="proficiency-bonus-input-label">
+                                            <p>proficiency bonus</p>
+                                        </div>
+                                    </div>
+
+                                    <div id="saving-throws-container" >
+                                        
+                                        
+                                        <div class="saving-throws-row">
+                                            <div    class="proficiency-selectors"
+                                                    id="strength-proficiency-selector"
+                                                    onclick="validateChecks(0);">
+                                            </div>
+                                            <div class="saving-throws-input">
+                                                <input  type="text"
+                                                        class="saving-throws-ability-value"
+                                                        id="saving-throws-strength-value">
+                                            </div>
+                                            <p>strength</p>
+                                        </div>
+
+                                        <div class="saving-throws-row">
+                                            <div    class="proficiency-selectors"
+                                                    id="dexterity-proficiency-selector"
+                                                    onclick="validateChecks(1);">
+                                            </div>
+                                            <div class="saving-throws-input">
+                                                <input  type="text"
+                                                        class="saving-throws-ability-value"
+                                                        id="saving-throws-dexterity-value">
+                                            </div>
+                                            <p>dexterity</p>
+                                        </div>
+
+                                        <div class="saving-throws-row">
+                                            <div    class="proficiency-selectors"
+                                                    id="constitution-proficiency-selector"
+                                                    onclick="validateChecks(2);">
+                                            </div>
+                                            <div class="saving-throws-input">
+                                                <input  type="text"
+                                                        class="saving-throws-ability-value"
+                                                        id="saving-throws-constitution-value">
+                                            </div>
+                                            <p>constitution</p>
+                                        </div>
+
+                                        <div class="saving-throws-row">
+                                            <div    class="proficiency-selectors"
+                                                    id="intelligence-proficiency-selector"
+                                                    onclick="validateChecks(3);">
+                                            </div>
+                                            <div class="saving-throws-input">
+                                                <input  type="text"
+                                                        class="saving-throws-ability-value"
+                                                        id="saving-throws-intelligence-value">
+                                            </div>
+                                            <p>intelligence</p>
+                                        </div>
+
+                                        <div class="saving-throws-row">
+                                            <div    class="proficiency-selectors"
+                                                    id="wisdom-proficiency-selector"
+                                                    onclick="validateChecks(4);">
+                                            </div>
+                                            <div class="saving-throws-input">
+                                                <input  type="text"
+                                                        class="saving-throws-ability-value"
+                                                        id="saving-throws-wisdom-value">
+                                            </div>
+                                            <p>wisdom</p>
+                                        </div>
+
+                                        <div class="saving-throws-row">
+                                            <div    class="proficiency-selectors"
+                                                    id="charisma-proficiency-selector"
+                                                    onclick="validateChecks(5);">
+                                            </div>
+                                            <div class="saving-throws-input">
+                                                <input  type="text"
+                                                        class="saving-throws-ability-value"
+                                                        id="saving-throws-charisma-value">
+                                            </div>
+                                            <p>charisma</p>
+                                        </div>
+
+                                        <p class="cc-box-titles">saving throws</p>
+                                        
+                                    </div>
+
+                                    <div id="skills-container">
+
+                                        <div class="saving-throws-row">
+                                            <div    class="proficiency-selectors"
+                                                    id="acrobatics-proficiency-selector"
+                                                    onclick="validateSkillChecks(0);">
+                                            </div>
+                                            <div class="saving-throws-input">
+                                                <input  type="text"
+                                                        class="saving-throws-ability-value"
+                                                        id="skill-throws-acrobatics-value">
+                                            </div>
+                                            <p>acrobatics</p>
+                                            <p style="color: grey; font-size: 8pt;">(Dex)</p>
+                                        </div>
+
+                                        <div class="saving-throws-row">
+                                            <div    class="proficiency-selectors"
+                                                    id="animal-handling-proficiency-selector"
+                                                    onclick="validateSkillChecks(1);">
+                                            </div>
+                                            <div class="saving-throws-input">
+                                                <input  type="text"
+                                                        class="saving-throws-ability-value"
+                                                        id="skill-throws-animal-handling-value">
+                                            </div>
+                                            <p>animal handling</p>
+                                            <p style="color: grey; font-size: 8pt;">(Wis)</p>
+                                        </div>
+
+                                        <div class="saving-throws-row">
+                                            <div    class="proficiency-selectors"
+                                                    id="arcana-proficiency-selector"
+                                                    onclick="validateSkillChecks(2);">
+                                            </div>
+                                            <div class="saving-throws-input">
+                                                <input  type="text"
+                                                        class="saving-throws-ability-value"
+                                                        id="skill-throws-arcana-value">
+                                            </div>
+                                            <p>arcana</p>
+                                            <p style="color: grey; font-size: 8pt;">(Int)</p>
+                                        </div>
+
+                                        <div class="saving-throws-row">
+                                            <div    class="proficiency-selectors"
+                                                    id="athletics-proficiency-selector"
+                                                    onclick="validateSkillChecks(3);">
+                                            </div>
+                                            <div class="saving-throws-input">
+                                                <input  type="text"
+                                                        class="saving-throws-ability-value"
+                                                        id="skill-throws-athletics-value">
+                                            </div>
+                                            <p>athletics</p>
+                                            <p style="color: grey; font-size: 8pt;">(Str)</p>
+                                        </div>
+
+                                        <div class="saving-throws-row">
+                                            <div    class="proficiency-selectors"
+                                                    id="deception-proficiency-selector"
+                                                    onclick="validateSkillChecks(4);">
+                                            </div>
+                                            <div class="saving-throws-input">
+                                                <input  type="text"
+                                                        class="saving-throws-ability-value"
+                                                        id="skill-throws-deception-value">
+                                            </div>
+                                            <p>deception</p>
+                                            <p style="color: grey; font-size: 8pt;">(Cha)</p>
+                                        </div>
+
+                                        <div class="saving-throws-row">
+                                            <div    class="proficiency-selectors"
+                                                    id="history-proficiency-selector"
+                                                    onclick="validateSkillChecks(5);">
+                                            </div>
+                                            <div class="saving-throws-input">
+                                                <input  type="text"
+                                                        class="saving-throws-ability-value"
+                                                        id="skill-throws-history-value">
+                                            </div>
+                                            <p>history</p>
+                                            <p style="color: grey; font-size: 8pt;">(Int)</p>
+                                        </div>
+
+                                        <div class="saving-throws-row">
+                                            <div    class="proficiency-selectors"
+                                                    id="insight-proficiency-selector"
+                                                    onclick="validateSkillChecks(6);">
+                                            </div>
+                                            <div class="saving-throws-input">
+                                                <input  type="text"
+                                                        class="saving-throws-ability-value"
+                                                        id="skill-throws-insight-value">
+                                            </div>
+                                            <p>insight</p>
+                                            <p style="color: grey; font-size: 8pt;">(Wis)</p>
+                                        </div>
+
+                                        <div class="saving-throws-row">
+                                            <div    class="proficiency-selectors"
+                                                    id="intimidation-proficiency-selector"
+                                                    onclick="validateSkillChecks(7);">
+                                            </div>
+                                            <div class="saving-throws-input">
+                                                <input  type="text"
+                                                        class="saving-throws-ability-value"
+                                                        id="skill-throws-intimidation-value">
+                                            </div>
+                                            <p>intimidation</p>
+                                            <p style="color: grey; font-size: 8pt;">(Cha)</p>
+                                        </div>
+
+                                        <div class="saving-throws-row">
+                                            <div    class="proficiency-selectors"
+                                                    id="investigation-proficiency-selector"
+                                                    onclick="validateSkillChecks(8);">
+                                            </div>
+                                            <div class="saving-throws-input">
+                                                <input  type="text"
+                                                        class="saving-throws-ability-value"
+                                                        id="skill-throws-investigation-value">
+                                            </div>
+                                            <p>investigation</p>
+                                            <p style="color: grey; font-size: 8pt;">(Int)</p>
+                                        </div>
+
+                                        <div class="saving-throws-row">
+                                            <div    class="proficiency-selectors"
+                                                    id="medicine-proficiency-selector"
+                                                    onclick="validateSkillChecks(9);">
+                                            </div>
+                                            <div class="saving-throws-input">
+                                                <input  type="text"
+                                                        class="saving-throws-ability-value"
+                                                        id="skill-throws-medicine-value">
+                                            </div>
+                                            <p>medicine</p>
+                                            <p style="color: grey; font-size: 8pt;">(Wis)</p>
+                                        </div>
+
+                                        <div class="saving-throws-row">
+                                            <div    class="proficiency-selectors"
+                                                    id="nature-proficiency-selector"
+                                                    onclick="validateSkillChecks(10);">
+                                            </div>
+                                            <div class="saving-throws-input">
+                                                <input  type="text"
+                                                        class="saving-throws-ability-value"
+                                                        id="skill-throws-nature-value">
+                                            </div>
+                                            <p>nature</p>
+                                            <p style="color: grey; font-size: 8pt;">(Int)</p>
+                                        </div>
+
+                                        <div class="saving-throws-row">
+                                            <div    class="proficiency-selectors"
+                                                    id="perception-proficiency-selector"
+                                                    onclick="validateSkillChecks(11);">
+                                            </div>
+                                            <div class="saving-throws-input">
+                                                <input  type="text"
+                                                        class="saving-throws-ability-value"
+                                                        id="skill-throws-perception-value">
+                                            </div>
+                                            <p>perception</p>
+                                            <p style="color: grey; font-size: 8pt;">(Wis)</p>
+                                        </div>
+
+                                        <div class="saving-throws-row">
+                                            <div    class="proficiency-selectors"
+                                                    id="performance-proficiency-selector"
+                                                    onclick="validateSkillChecks(12);">
+                                            </div>
+                                            <div class="saving-throws-input">
+                                                <input  type="text"
+                                                        class="saving-throws-ability-value"
+                                                        id="skill-throws-performance-value">
+                                            </div>
+                                            <p>performance</p>
+                                            <p style="color: grey; font-size: 8pt;">(Cha)</p>
+                                        </div>
+
+                                        <div class="saving-throws-row">
+                                            <div    class="proficiency-selectors"
+                                                    id="persuasion-proficiency-selector"
+                                                    onclick="validateSkillChecks(13);">
+                                            </div>
+                                            <div class="saving-throws-input">
+                                                <input  type="text"
+                                                        class="saving-throws-ability-value"
+                                                        id="skill-throws-persuasion-value">
+                                            </div>
+                                            <p>persuasion</p>
+                                            <p style="color: grey; font-size: 8pt;">(Cha)</p>
+                                        </div>
+
+                                        <div class="saving-throws-row">
+                                            <div    class="proficiency-selectors"
+                                                    id="religion-proficiency-selector"
+                                                    onclick="validateSkillChecks(14);">
+                                            </div>
+                                            <div class="saving-throws-input">
+                                                <input  type="text"
+                                                        class="saving-throws-ability-value"
+                                                        id="skill-throws-religion-value">
+                                            </div>
+                                            <p>religion</p>
+                                            <p style="color: grey; font-size: 8pt;">(Int)</p>
+                                        </div>
+
+                                        <div class="saving-throws-row">
+                                            <div    class="proficiency-selectors"
+                                                    id="sleight-of-hand-proficiency-selector"
+                                                    onclick="validateSkillChecks(15);">
+                                            </div>
+                                            <div class="saving-throws-input">
+                                                <input  type="text"
+                                                        class="saving-throws-ability-value"
+                                                        id="skill-throws-sleight-of-hand-value">
+                                            </div>
+                                            <p>sleight of hand</p>
+                                            <p style="color: grey; font-size: 8pt;">(Dex)</p>
+                                        </div>
+
+                                        <div class="saving-throws-row">
+                                            <div    class="proficiency-selectors"
+                                                    id="stealth-proficiency-selector"
+                                                    onclick="validateSkillChecks(16);">
+                                            </div>
+                                            <div class="saving-throws-input">
+                                                <input  type="text"
+                                                        class="saving-throws-ability-value"
+                                                        id="skill-throws-stealth-value">
+                                            </div>
+                                            <p>stealth</p>
+                                            <p style="color: grey; font-size: 8pt;">(Dex)</p>
+                                        </div>
+
+                                        <div class="saving-throws-row">
+                                            <div    class="proficiency-selectors"
+                                                    id="survival-proficiency-selector"
+                                                    onclick="validateSkillChecks(17);">
+                                            </div>
+                                            <div class="saving-throws-input">
+                                                <input  type="text"
+                                                        class="saving-throws-ability-value"
+                                                        id="skill-throws-survival-value">
+                                            </div>
+                                            <p>survival</p>
+                                            <p style="color: grey; font-size: 8pt;">(Wis)</p>
+                                        </div>
+
+                                        <p class="cc-box-titles">skills</p>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div id="passive-wisdom-input-container">
+                                <input  type="text"
+                                        id="passive-wisdom-input-value"
+                                        value="0">
+                                <div    id="passive-wisdom-input-label">
+                                    <p>passive wisdom</p>
+                                </div>
+                            </div>
+
+                            <div id="cc-proficiencies-and-languages-container">
+                                <p id="cc-prof-and-lang-titles">proficiencies.</p>
+
+                                <p id="cc-prof-and-lang-titles">languages.</p>
+                            </div>
+
+                        </div>
+
+                        <div id="character-creation-column-two">
+                            
+                        </div>
+
+                        <div id="character-creation-column-three">
+                            
+                        </div>
+                    </div>
+
+                    <input id="add-character-btn" type="button" value="Add" onclick="addCharacterToList();">                
+                    <p id="completion-message"
+                    style=
+                    "color: greenyellow;
+                        background-color: grey;
+                        padding: 4px;
+                        border-radius: 3px;"
+                    >Nothing here, only crickets...</p>
+                </div>
+            </div>
+
+        </div>
+        
+        
+        <div id="bottom-blank-space"
+        style="
+        height: 80px;">
+
+        </div>
+    </div>
+
+
+    <div class="main_control_container">
+        <div class="main_control_bar_OFF", id="main_control_bar">
+            <ul class="main_control_buttons">
+                <li><a href="#">Game</a></li>
+                <li><a href="#">Characters</a></li>
+                <li><a href="#">Dungeons</a></li>
+                <li><a href="#">Enemies</a></li>
+                <li><a href="#">Maps</a></li>
+            </ul>
+        </div>
+        <a class="control_bar_display_btn" onclick="menuDisplay();">
+        <div style="border: 1px solid white; width: 15px; margin-bottom: 3px;"></div>
+        <div style="border: 1px solid white; width: 15px; margin-bottom: 3px;"></div>
+        <div style="border: 1px solid white; width: 15px;"></div>
+        </a>
+    </div>
+
+
+    </body>
+
+</html>
