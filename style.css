@@ -728,9 +728,7 @@ img {vertical-align: middle;}
     /* #region */
         #cc-proficiencies-and-languages-container {
             height: 300px;
-            margin-left: 20px;
-            margin-right: 20px;
-            margin-top: 20px;
+            margin: 20px;
             
             border: 2px dashed black;
         }
