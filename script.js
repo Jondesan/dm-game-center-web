@@ -202,7 +202,25 @@ function validateSkillChecks(idIndex) {
 };
 
 
+var characterCreationAppletOn = true;
 
+function turnCharacterCreationOn() {
+    if(characterCreationAppletOn){
+        characterCreationAppletOn = false;
+        $("#cc-shide-btn-icon").animate({height: "10px"},{duration: 200, queue: false});
+        $("#cc-shide-btn-icon").animate({width: "10px"},{duration: 200, queue: false});
+        $("#cc-shide-btn-icon").animate({backgroundColor: "transparent"},{duration: 200, queue: false});
+        /* document.getElementById("cc-shide-btn-icon").style.height = "10px";
+        document.getElementById("cc-shide-btn-icon").style.backgroundColor = "transparent"; */
+        $(".character-creation-container").fadeOut("slow");
+    }else{
+        characterCreationAppletOn = true;
+        $("#cc-shide-btn-icon").animate({height: "3px"},{duration: 200, queue: false});
+        $("#cc-shide-btn-icon").animate({width: "14px"},{duration: 200, queue: false});
+        $("#cc-shide-btn-icon").animate({backgroundColor: "white"},{duration: 200, queue: false});
+        $(".character-creation-container").fadeIn("slow");
+    };
+};
 
 var navigationOn = true;
 

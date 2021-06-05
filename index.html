@@ -13,7 +13,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script type="text/javascript" src="script.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-        
+        <script src="scripts/jquery-3.6.0.js"></script>
+        <script src="scripts/jquery-ui.min.js"></script>
+
         <!-- <script>
             window.onbeforeunload = function () {
                 return 'Do you really want to leave? You will lose all unsaved data!';
@@ -135,7 +137,21 @@
                 </div>
             </div>
             
-            <div class="display-box">
+            <div class="display-box" id="character-creation-applet">
+                <div class="container-tab-bar">
+                    <div id="container-tab-bar-shide-btn" onclick="turnCharacterCreationOn();">
+                        <div class="shide-btn-gfx-container">
+
+                            <div    id="cc-shide-btn-icon"
+                                    style=" border: 1px solid white;
+                                            background-color: white;
+                                            width: 14px;
+                                            height: 3px;
+                                            display: absolute;"></div>
+                        </div>
+                    </div>
+                    <p>Character creation applet</p>
+                </div>
                 <div class="character-creation-container">
                     <div id="character-creation-headbar-container"
                     style="
@@ -672,8 +688,7 @@
         
         
         <div id="bottom-blank-space"
-        style="
-        height: 80px;">
+        style="height: 80px;">
 
         </div>
     </div>
