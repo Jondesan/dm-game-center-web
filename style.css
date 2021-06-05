@@ -127,7 +127,7 @@ header{
 }
 
 #dnd_logo:hover {
-    width: 130px;
+    width: 105px;
     transition: 0.3s;
 }
 
@@ -138,11 +138,7 @@ header{
     text-transform: uppercase;
     letter-spacing: 0.1em;
   }
-  
- /*  .ml12 .letter {
-    display: inline-block;
-    line-height: 1em;
-  } */
+
 
 
 .navigation_items li{
@@ -410,7 +406,7 @@ img {vertical-align: middle;}
 
 .display-box {
     display: block;
-    margin-top: 80px;
+    margin-top: 10px;
 }
 
 .container-tab-bar {
@@ -422,7 +418,7 @@ img {vertical-align: middle;}
     padding-left: 10px;
 }
 
-    #container-tab-bar-shide-btn {
+    .container-tab-bar-shide-btn {
         width: 26px;
         height: 26px;
         border-radius: 5px;
@@ -445,11 +441,16 @@ img {vertical-align: middle;}
         font-weight: bold;
     }
 
+
+
+
+
 /*############## CHARACTER CREATION APPLET ##############*/
 
 .character-creation-container {
     padding-left: 60px;
     padding-right: 60px;
+    padding-top: 20px;
     /* max-width: 1400px; */
     border: 1px solid red;
 }
@@ -783,6 +784,155 @@ img {vertical-align: middle;}
     border: 1px solid blue;
 }
 
+    .cc-group-container {
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+
+        border: 1px solid red;
+    }
+    
+        #icon-row-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+        }
+
+            /* ### ARMOR CLASS, INITIATIVE AND SPEED ### */
+            /* #region */
+            #armor-class-icon-container {
+                width: 80px;
+                height: 80px;
+                border-radius: 6px;
+
+                border: 1px solid blue;
+            }
+
+            #initiative-icon-container {
+                width: 80px;
+                height: 80px;
+                border-radius: 6px;
+
+                border: 1px solid blue;
+            }
+
+            #speed-icon-container {
+                width: 80px;
+                height: 80px;
+                border-radius: 6px;
+
+                border: 1px solid blue;
+            }
+            /* #endregion */
+
+            /* ### CURRENT AND TEMPORARY HIT POINTS ### */
+            /* #region */
+            #current-hp-container {
+                margin-bottom: 10px;
+                padding-bottom: 5px;
+                border-radius: 10px 10px 0px 0px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: center;
+                border: 1px solid black;
+            }
+            .max-hp-row {
+                display: flex;
+                justify-content: flex-start;
+                margin-top: 2px;
+            }
+                .max-hp-row input {
+                    align-self: center;
+                    font-size: 12pt;
+                    text-align: center;
+                    background: transparent;
+                    border: none;
+                    border-bottom: 1px solid black;
+                }
+                .max-hp-row input:focus {
+                    outline: none;
+                }
+                .max-hp-row p {
+                    align-self: center;
+                    font-size: 10pt;
+                    margin: 0;
+                    margin-left: 10px;
+                    text-transform: capitalize;
+                    font-weight: 200;
+                    font-size: 0.9em;
+                    letter-spacing: 0.02em;
+                }
+
+                #max-hp-label {
+                    /* text-align: center; */
+                    /* text-transform: uppercase; */
+                    color: grey;
+                    font-weight: bold;
+                    font-size: 8pt;
+                    margin-top: 5px;
+                }
+                #max-hp-input-value {
+                    /* width: 40px; */
+                    flex-grow: 1;
+                    border-bottom: 1px solid grey;
+                    text-align: left;
+                    
+                    margin-right: 5px;
+                    margin-left: 10px;
+                }
+
+                #current-hp-input-value {
+                    margin-top: 10px;
+                    align-self: center;
+                    font-size: 16pt;
+                    height: 50px;
+                    width: 100px;
+                    text-align: center;
+                    background: transparent;
+                    border: none;
+                    border-radius: 5px;
+                }
+                    #current-hp-input-value:focus {
+                        outline: none;
+                    }
+                    #current-hp-input-value:hover {
+                        background-color: rgb(255, 237, 155);
+                    }
+                    
+
+            #temp-hp-container {
+                border-radius: 0px 0px 6px 6px;
+                padding-bottom: 5px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: center;
+
+                border: 1px solid black;
+            }
+
+                #temp-hp-input-value {
+                    margin-top: 10px;
+                    align-self: center;
+                    font-size: 16pt;
+                    height: 50px;
+                    width: 100px;
+                    text-align: center;
+                    background: transparent;
+                    border: none;
+                    border-radius: 5px;
+                }
+                    #temp-hp-input-value:focus {
+                        outline: none;
+                    }
+                    #temp-hp-input-value:hover {
+                        background-color: rgb(255, 237, 155);
+                    }
+            /* #endregion */
+
 #character-creation-column-three {
     min-height: 500px;
     /* min-width: 150px; */
@@ -823,17 +973,14 @@ img {vertical-align: middle;}
 
 
 .main_control_container {
-    width: 99vw;
     min-height: 80px;
     position: fixed;
     bottom: 0;
-    padding: 10px;
+    margin-left: 10px;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
     justify-content: flex-start;
-    overflow: hidden;
-    clear: both;
 }
 
 .control_bar_display_btn {
@@ -856,11 +1003,11 @@ img {vertical-align: middle;}
 
 
 .main_control_buttons {
-    display: none;
-    opacity: hidden;
+    display: flex;
+    opacity: 1;
 }
 
-.main_control_buttons a {
+.main_control_buttons li {
     color: white;
     text-decoration: none;
     font-size: 14pt;
@@ -874,42 +1021,25 @@ img {vertical-align: middle;}
     transition: 0.5s;
 }
 
-.main_control_buttons a:hover {
+.main_control_buttons li:hover {
     background-color: #a34c50;
     transition: 0.5s;
 }
 
-.main_control_buttons li {
-    margin: 0px;
-    margin-left: 5px;
-    margin-right: 5px;
-    display: inline-block;
-}
 
 
-.main_control_bar_ON {
+.main_control_bar {
     background-color: #264c5e;
     min-height: 50px;
-    /* min-width: 100%; */
-    width: 100vw;
     padding-left: 60px;
+    border: 2px solid #e8443c;
     border-radius: 5px;
     position: relative;
-    display: flex;
+    display: none;
     flex-flow: row wrap;
+    flex-grow: 1;
+    flex-shrink: 1;
     justify-content: center;
     align-items: center;
 }
 
-.main_control_bar_OFF {
-    background-color: #264c5e;
-    height: 30px;
-    width: 30px;
-    /* min-width: 100%; */
-    position: relative;
-    display: none;
-}
-
-.main_control_bar {
-    display: none;
-}

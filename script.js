@@ -86,6 +86,8 @@ var character_list = [];
 const addCharacterBtn = document.getElementById('add-character-btn');
 
 
+
+
 if(addCharacterBtn){
     addCharacterBtn.addEventListener(   'click',
                                         addCharacterToList(Character(
@@ -210,68 +212,64 @@ function turnCharacterCreationOn() {
         $("#cc-shide-btn-icon").animate({height: "10px"},{duration: 200, queue: false});
         $("#cc-shide-btn-icon").animate({width: "10px"},{duration: 200, queue: false});
         $("#cc-shide-btn-icon").animate({backgroundColor: "transparent"},{duration: 200, queue: false});
-        /* document.getElementById("cc-shide-btn-icon").style.height = "10px";
-        document.getElementById("cc-shide-btn-icon").style.backgroundColor = "transparent"; */
-        $(".character-creation-container").fadeOut("slow");
+        $(".character-creation-container").stop(true).fadeOut("slow");
     }else{
         characterCreationAppletOn = true;
         $("#cc-shide-btn-icon").animate({height: "3px"},{duration: 200, queue: false});
         $("#cc-shide-btn-icon").animate({width: "14px"},{duration: 200, queue: false});
         $("#cc-shide-btn-icon").animate({backgroundColor: "white"},{duration: 200, queue: false});
-        $(".character-creation-container").fadeIn("slow");
+        $(".character-creation-container").stop(true).fadeIn("slow");
     };
 };
 
-var navigationOn = true;
+
+var campaignMapAppletOn = true;
+
+function turnCampaignMapOn() {
+    if(campaignMapAppletOn){
+        campaignMapAppletOn = false;
+        $("#camp-map-shide-btn-icon").animate({height: "10px"},{duration: 200, queue: false});
+        $("#camp-map-shide-btn-icon").animate({width: "10px"},{duration: 200, queue: false});
+        $("#camp-map-shide-btn-icon").animate({backgroundColor: "transparent"},{duration: 200, queue: false});
+        $(".main_console_wrapper").stop(true).fadeOut("slow");
+    }else{
+        campaignMapAppletOn = true;
+        $("#camp-map-shide-btn-icon").animate({height: "3px"},{duration: 200, queue: false});
+        $("#camp-map-shide-btn-icon").animate({width: "14px"},{duration: 200, queue: false});
+        $("#camp-map-shide-btn-icon").animate({backgroundColor: "white"},{duration: 200, queue: false});
+        $(".main_console_wrapper").stop(true).fadeIn("slow");
+    };
+};
+
+
+
+var navigationOn = false;
 
 function menuDisplay()    
 {   
-    var nagivationBar = document.getElementById("main_control_bar");    
-    
-    
-    var shrink = anime({
-        targets: '.main_control_bar_ON',
-        borderRadius: 20,
-        duration: 500,
-        width: '5px',
-        easing: "easeInOutQuad",
-    });
+        if (navigationOn) {
+        navigationOn = false;
+        $(".main_control_bar").stop(true).fadeOut({duration: "500", queue: true});
+        /* $(".main_control_container").css(); */
+    }else{
+        navigationOn = true;
+        /* $(".main_control_container").show(); */
+        $(".main_control_bar").stop(true).fadeIn({duration: "500", queue: true});
+        $(".main_control_bar").css("display","flex");
+    }
+};
 
-    var increaseOpacity = anime({
-        targets: '.main_control_buttons',
-        opacity: ['0','1'],
-        duration: 250,
-        startDelay: 600,
-        easing: 'easeInOutQuad',
-        begin: function() {document.querySelector('.main_control_buttons').style.display = 'block';},
-    });
 
-    var expand = anime({
-        targets: '.main_control_bar_OFF',
-        borderRadius: 5,
-        duration: 300,
-        width: ['5px','99vw'],
-        easing: "linear",
-    });
-    
-    var timeline = anime.timeline({
-        easing: 'easeInOutExpo',
-        duration: 300,
-    });
 
+function debugMessage() {
+    var e = $(this).text;
+    $("#debug-msg-box-text").text($(this).text() + "Button was clicked!");
     
-    if (nagivationBar.className == "main_control_bar_OFF")
-    /* if (!navigationOn) */
-    {    
-        expand.play();
-        /* setTimeout(increaseOpacity.play(), 3000); */
-        
-        nagivationBar.className = "main_control_bar_ON";
-    } else    
-    {
-        shrink.play();
-        nagivationBar.className = "main_control_bar_OFF";
-    }    
+    
+    /* $('div.main-control-button').click(function() {
+        var text = $(this).text();
+        $("#debug-msg-box-text").text(text + " Button was clicked!");
+    }); */
 };
 
 

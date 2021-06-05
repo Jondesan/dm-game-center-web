@@ -117,8 +117,23 @@
         flex-direction: column;
         flex-wrap: wrap;
         justify-content: space-evenly;
+        margin-top: 80px;
         padding-bottom: 30ox;">
             <div class="display-box">
+                <div class="container-tab-bar">
+                    <div class="container-tab-bar-shide-btn" onclick="turnCampaignMapOn();">
+                        <div class="shide-btn-gfx-container">
+
+                            <div    id="camp-map-shide-btn-icon"
+                                    style=" border: 1px solid white;
+                                            background-color: white;
+                                            width: 14px;
+                                            height: 3px;
+                                            display: absolute;"></div>
+                        </div>
+                    </div>
+                    <p>Campaign map applet</p>
+                </div>
                 <div class="main_console_wrapper">
                     <div class="console_container">
                         <div class="console_tab_bar">
@@ -139,7 +154,7 @@
             
             <div class="display-box" id="character-creation-applet">
                 <div class="container-tab-bar">
-                    <div id="container-tab-bar-shide-btn" onclick="turnCharacterCreationOn();">
+                    <div class="container-tab-bar-shide-btn" onclick="turnCharacterCreationOn();">
                         <div class="shide-btn-gfx-container">
 
                             <div    id="cc-shide-btn-icon"
@@ -666,6 +681,60 @@
 
                         <div id="character-creation-column-two">
                             
+                            <div class="cc-group-container">
+
+                                <div id="icon-row-container">
+
+                                    <div id="armor-class-icon-container">
+
+                                    </div>
+
+                                    <div id="initiative-icon-container">
+
+                                    </div>
+
+                                    <div id="speed-icon-container">
+
+                                    </div>
+
+                                </div>
+
+                                <div class="cc-group-container">
+
+                                    <div id="current-hp-container">
+                                        <div class="max-hp-row">
+                                            <p id="max-hp-label">
+                                                Hit Point Maximum
+                                            </p>
+                                            <input  type="text"
+                                                    id="max-hp-input-value"
+                                                    value="12">
+                                        </div>
+                                        
+                                        <div id="current-hp-value">
+                                            <input  type="text"
+                                                    id="current-hp-input-value"
+                                                    value="34">
+                                        </div>
+
+                                        <div class="cc-box-titles">current hit points</div>
+                                    </div>
+
+                                    <div id="temp-hp-container">
+                                        <div id="temp-hp-value">
+                                            <input  type="text"
+                                                    id="temp-hp-input-value"
+                                                    value="31">
+                                        </div>
+
+                                        <div class="cc-box-titles">temporary hit points</div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
                         </div>
 
                         <div id="character-creation-column-three">
@@ -695,13 +764,16 @@
 
 
     <div class="main_control_container">
-        <div class="main_control_bar_OFF", id="main_control_bar">
+        <div class="main_control_bar", id="main_control_bar">
             <ul class="main_control_buttons">
-                <li><a href="#">Game</a></li>
-                <li><a href="#">Characters</a></li>
-                <li><a href="#">Dungeons</a></li>
-                <li><a href="#">Enemies</a></li>
-                <li><a href="#">Maps</a></li>
+                <li onclick="debugMessage();"
+                    id="file-btn"
+                    class="main-control-button">File</li>
+                <li class="main-control-button">Game</li>
+                <li class="main-control-button">Characters</li>
+                <li class="main-control-button">Dungeons</li>
+                <li class="main-control-button">Enemies</li>
+                <li class="main-control-button">Maps</li>
             </ul>
         </div>
         <a class="control_bar_display_btn" onclick="menuDisplay();">
@@ -711,6 +783,27 @@
         </a>
     </div>
 
+    
+
+    <div    class="debug-message-box"
+            style=" width: 250px;
+                    height: 80px;
+                    position: fixed;
+                    bottom: 10px;
+                    right: 10px;
+                    border: 2px solid black;
+                    border-radius: 5px;
+                    background-color: rgb(48, 48, 48);">
+        <p  style=" color: greenyellow;
+                    margin: 0;
+                    margin-top: 10px;
+                    margin-left: 10px;">
+            Info:
+        </p>
+        <p  id="debug-msg-box-text"
+            style=" margin-left: 10px;
+                    color: greenyellow;"></p>
+    </div>
 
     </body>
 
