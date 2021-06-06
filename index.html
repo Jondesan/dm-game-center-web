@@ -11,16 +11,69 @@
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Assistant&family=Nobile:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+        <link rel="manifest" href="favicon/site.webmanifest">
+        <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5">
+        <meta name="msapplication-TileColor" content="#ffc40d">
+        <meta name="theme-color" content="#ffffff">
+
+
         <script type="text/javascript" src="script.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
         <script src="scripts/jquery-3.6.0.js"></script>
         <script src="scripts/jquery-ui.min.js"></script>
+        <script src="MINImusic/js/musicplayer.js"></script>
 
         <!-- <script>
             window.onbeforeunload = function () {
+                $("#debug-msg-box-text").text("Unsaved data will be lost!");
                 return 'Do you really want to leave? You will lose all unsaved data!';
             }
         </script> -->
+
+        <script>
+            $( document ).ready(function() {
+                $('.main-control-button').click(function() {
+                    var text = $(this).text();
+                    $("#debug-msg-box-text").text(text + " button was clicked!");
+                });
+                $('.main-control-button').disableSelection();
+                $(".container-tab-bar p").disableSelection();
+                $(".music-player").musicPlayer();
+                $(".music-player").musicPlayer({
+                    autoPlay: false , 
+                    volume: 80, 
+                    loop: false, 
+                    timeSeparator: ' / ',
+                    playerAbovePlaylist: true,  
+                    infoElements: ['title' , 'artist'] , 
+                    elements: ['artwork', 'information', 'controls', 'progress', 'time', 'volume'],  
+                    timeElements: ['current', 'duration'],  
+                    controlElements: ['backward', 'play', 'forward', 'stop'], 
+                });
+                $(".music-player").musicPlayer({
+                    onLoad: function() {}, 
+                    onPlay: function() {}, 
+                    onPause: function() {}, 
+                    onStop: function() {}, 
+                    onFwd: function() {}, 
+                    onRew: function() {}, 
+                    volumeChanged: function() {}, 
+                    progressChanged: function() {} , 
+                    trackClicked: function() {},
+                    onMute: function() {}
+                });
+            });
+
+
+            /* window.onbeforeunload = function () {
+                $("#debug-msg-box-text").text("Unsaved data will be lost!");
+                return 'Do you really want to leave? You will lose all unsaved data!';
+            } */
+        </script>
 
     </head>
 
@@ -119,7 +172,7 @@
         justify-content: space-evenly;
         margin-top: 80px;
         padding-bottom: 30ox;">
-            <div class="display-box">
+            <div class="display-box" id="campaign-map-applet">
                 <div class="container-tab-bar">
                     <div class="container-tab-bar-shide-btn" onclick="turnCampaignMapOn();">
                         <div class="shide-btn-gfx-container">
@@ -732,6 +785,60 @@
 
                                 </div>
 
+                                <div    class="cc-group-container"
+                                        id="hit-dice-death-saves-container">
+                                    <div id="hit-dice-container">
+                                        <div    class="max-hp-row">
+                                            <p id="total-hit-dice-label">
+                                                Total
+                                            </p>
+                                            <input  type="text"
+                                                    id="total-hit-dice-input-value"
+                                                    value="1d10">
+                                        </div>
+                                        
+                                        <div id="current-hit-dice-value">
+                                            <input  type="text"
+                                                    id="current-hit-dice-input-value"
+                                                    value="34">
+                                        </div>
+                                        <div class="cc-box-titles">hit dice</div>
+                                    </div>
+
+                                    <div id="death-saves-container">
+                                        <div    class="ds-subrow"
+                                                id="successes-row">
+                                            <div class="death-save-quantity-label">    
+                                                <p>successes</p>
+                                            </div>
+                                            <div class="quantity-selectors-container">
+                                                <div    class="quantity-selectors"
+                                                        id="successes-selectors">
+                                                    <div class="quantity-selector"></div>
+                                                    <div class="quantity-selector"></div>
+                                                    <div class="quantity-selector"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div    class="ds-subrow"
+                                                id="failures-row">
+                                            <div class="death-save-quantity-label">    
+                                                <p>failures</p>
+                                            </div>
+                                            <div class="quantity-selectors-container">
+                                                <div    class="quantity-selectors"
+                                                        id="failures-selectors">
+                                                    <div class="quantity-selector"></div>
+                                                    <div class="quantity-selector"></div>
+                                                    <div class="quantity-selector"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="cc-box-titles">death saves</div>
+                                    </div>
+                                </div>
+
                             </div>
 
 
@@ -753,6 +860,42 @@
                 </div>
             </div>
 
+            <div class="display-box" id="mini-music-player">
+                <div class="container-tab-bar">
+                    <div class="container-tab-bar-shide-btn" onclick="turnMusicPlayerOn();">
+                        <div class="shide-btn-gfx-container">
+
+                            <div    id="mmp-shide-btn-icon"
+                                    style=" border: 1px solid white;
+                                            background-color: white;
+                                            width: 14px;
+                                            height: 3px;
+                                            display: absolute;"></div>
+                        </div>
+                    </div>
+                    <p>MINI-music player applet</p>
+                </div>
+
+                <div class="music-player-container">
+                    <div class="music-player">
+                        <ul class="playlist">
+                            <li data-cover="https://cdns-images.dzcdn.net/images/cover/54d587e0561209544c24378b66c17180/350x350.jpg"
+                                data-artist="Måneskin">
+                                <a href="music/maneskin-zitti-e-buoni.mp3">Zitti e Buoni</a>
+                            </li>
+                            <li data-cover="https://images.genius.com/9861187f94f33a39e39283eaaf107e6f.1000x1000x1.jpg"
+                                data-artist="Bo Burnham">
+                                <a href="music/bo-burnham-inside.mp3">Inside</a>
+                            </li>
+                            <li data-cover="https://images.genius.com/9861187f94f33a39e39283eaaf107e6f.1000x1000x1.jpg"
+                                data-artist="Bo Burnham">
+                                <a href="music/bo-burnham-how-the-world-works.mp3">How the World Works</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
         </div>
         
         
@@ -766,9 +909,18 @@
     <div class="main_control_container">
         <div class="main_control_bar", id="main_control_bar">
             <ul class="main_control_buttons">
-                <li onclick="debugMessage();"
+                <li onclick="turnFileMenuOn();"
                     id="file-btn"
-                    class="main-control-button">File</li>
+                    class="main-control-button">
+                        File
+                    </li>
+                    <div    id="file-menu"
+                            class="control-btn-menu">
+                        <ul>
+                           <li class="main-control-button">Open</li>
+                           <li class="main-control-button">Save</li>
+                        </ul>
+                    </div>
                 <li class="main-control-button">Game</li>
                 <li class="main-control-button">Characters</li>
                 <li class="main-control-button">Dungeons</li>
@@ -789,11 +941,11 @@
             style=" width: 250px;
                     height: 80px;
                     position: fixed;
-                    bottom: 10px;
+                    bottom: 80px;
                     right: 10px;
                     border: 2px solid black;
                     border-radius: 5px;
-                    background-color: rgb(48, 48, 48);">
+                    background-color: rgba(48, 48, 48, 0.7);">
         <p  style=" color: greenyellow;
                     margin: 0;
                     margin-top: 10px;

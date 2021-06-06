@@ -204,6 +204,26 @@ function validateSkillChecks(idIndex) {
 };
 
 
+var musicPlayerOn = true;
+
+function turnMusicPlayerOn() {
+    if(musicPlayerOn){
+        musicPlayerOn = false;
+        $("#mmp-shide-btn-icon").animate({height: "10px"},{duration: 200, queue: false});
+        $("#mmp-shide-btn-icon").animate({width: "10px"},{duration: 200, queue: false});
+        $("#mmp-shide-btn-icon").animate({backgroundColor: "transparent"},{duration: 200, queue: false});
+        $(".music-player-container").stop(true).fadeOut("fast");
+    }else{
+        musicPlayerOn = true;
+        $("#mmp-shide-btn-icon").animate({height: "3px"},{duration: 200, queue: false});
+        $("#mmp-shide-btn-icon").animate({width: "14px"},{duration: 200, queue: false});
+        $("#mmp-shide-btn-icon").animate({backgroundColor: "white"},{duration: 200, queue: false});
+        $(".music-player-container").stop(true).fadeIn("slow");
+    };
+};
+
+
+
 var characterCreationAppletOn = true;
 
 function turnCharacterCreationOn() {
@@ -212,7 +232,7 @@ function turnCharacterCreationOn() {
         $("#cc-shide-btn-icon").animate({height: "10px"},{duration: 200, queue: false});
         $("#cc-shide-btn-icon").animate({width: "10px"},{duration: 200, queue: false});
         $("#cc-shide-btn-icon").animate({backgroundColor: "transparent"},{duration: 200, queue: false});
-        $(".character-creation-container").stop(true).fadeOut("slow");
+        $(".character-creation-container").stop(true).fadeOut("fast");
     }else{
         characterCreationAppletOn = true;
         $("#cc-shide-btn-icon").animate({height: "3px"},{duration: 200, queue: false});
@@ -231,7 +251,7 @@ function turnCampaignMapOn() {
         $("#camp-map-shide-btn-icon").animate({height: "10px"},{duration: 200, queue: false});
         $("#camp-map-shide-btn-icon").animate({width: "10px"},{duration: 200, queue: false});
         $("#camp-map-shide-btn-icon").animate({backgroundColor: "transparent"},{duration: 200, queue: false});
-        $(".main_console_wrapper").stop(true).fadeOut("slow");
+        $(".main_console_wrapper").stop(true).fadeOut("fast");
     }else{
         campaignMapAppletOn = true;
         $("#camp-map-shide-btn-icon").animate({height: "3px"},{duration: 200, queue: false});
@@ -239,6 +259,20 @@ function turnCampaignMapOn() {
         $("#camp-map-shide-btn-icon").animate({backgroundColor: "white"},{duration: 200, queue: false});
         $(".main_console_wrapper").stop(true).fadeIn("slow");
     };
+};
+
+
+
+var fileMenuOn = false;
+
+function turnFileMenuOn() {
+    if(fileMenuOn){
+        fileMenuOn = false;
+        $("#file-menu").stop(true).fadeOut("fast");
+    }else{
+        fileMenuOn = true;
+        $("#file-menu").stop(true).fadeIn("fast");
+    }
 };
 
 
