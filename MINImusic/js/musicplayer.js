@@ -9,7 +9,7 @@
     defaults = {
       playlistItemSelector: "li",
       autoPlay: false,
-      volume: 80,
+      volume: 60,
       loop: false,
       timeSeparator: " / ",
       playerAbovePlaylist: true,

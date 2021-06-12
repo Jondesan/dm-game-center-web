@@ -83,10 +83,48 @@ var character_list = [];
 
 
 
+
+var exitPromptVisible = false;
+
+function exitPromptDenied(){
+    $("#exit-prompt-container").stop(true).fadeOut("fast");
+    exitPromptVisible = false;
+};
+
+function exitPromptAccepted(){
+
+};
+
+function turnExitPromptVisible(){
+    if(!exitPromptVisible){
+        exitPromptVisible = true;
+        $("#exit-prompt-container").stop(true).fadeIn("fast");
+    }
+};
+
+
+
+var characterIconAddressMap = new Map();
+var classList = [   "barbarian",
+                    "bard",
+                    "cleric",
+                    "druid",
+                    "fighter",
+                    "monk",
+                    "paladin",
+                    "ranger",
+                    "rogue",
+                    "sorcerer"];
+for(i = 0; i < classList.length; i++) {
+    var refString = "img/character_icons/" + classList[i] + "_og.png";
+    characterIconAddressMap.set(classList[i],refString);
+};
+
+
+
+
+
 const addCharacterBtn = document.getElementById('add-character-btn');
-
-
-
 
 if(addCharacterBtn){
     addCharacterBtn.addEventListener(   'click',
@@ -290,6 +328,10 @@ function menuDisplay()
         /* $(".main_control_container").show(); */
         $(".main_control_bar").stop(true).fadeIn({duration: "500", queue: true});
         $(".main_control_bar").css("display","flex");
+        if(fileMenuOn){
+            fileMenuOn = false;
+            $("#file-menu").stop(true).hide();
+        }
     }
 };
 

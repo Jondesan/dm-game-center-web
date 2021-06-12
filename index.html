@@ -66,6 +66,12 @@
                     trackClicked: function() {},
                     onMute: function() {}
                 });
+                
+                $('#new-character-class').change(function(){
+                    var refString = "img/character_icons/" + $(this).val() + "_og.png";
+                    $("#character-icon").css("background-image","url('"+ refString +"')")
+
+                });
             });
 
 
@@ -81,7 +87,7 @@
     <div id="page-container">
 
         <header>
-            <a href="index.html">
+            <a>
                 <img src="img/dnd-logo.png" alt="dnd-logo" id="dnd_logo">
             </a>
         <nav>
@@ -96,72 +102,6 @@
         </header>
 
         
-        <div class="slideshow-container">
-            
-                <div class="mySlides fade">
-                    <div class="numbertext">1 / 2</div>
-                    <div class="carousel-text">
-                        <h3>Tutustu kurssivalikoimaamme!</h3>
-                        <p>Ota selvää minkä aineiden kertauskursseja tarjoamme tänä vuonna ja suoriudu tulevista
-                            yo-kokeista kunnialla!
-                        </p>
-                        <a href="html/kurssit.html">Kurssit</a>
-                    </div>
-                  <img src="img/1_c.png" style="width:100%">
-                  <!-- <div class="text">Caption Text</div> -->
-                </div>
-                
-                <div class="mySlides fade">
-                    <div class="numbertext">2 / 2</div>
-                    <div class="carousel-text">
-                        <h3>Testiotsikko 2</h3>
-                        <p>Tähän jotain testitekstiä lisää.</p>
-                        <a href="#">Lue lisää!</a>
-                    </div>
-                  <img src="img/2_c.png" style="width:100%">
-                  <!-- <div class="text">Caption Two</div> -->
-                </div>
-                
-                
-                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                <a class="next" onclick="plusSlides(1)">&#10095;</a>
-                
-                <div class="carousel-dots" style="text-align:center">
-                    <span class="dot" onclick="currentSlide(1)"></span> 
-                    <span class="dot" onclick="currentSlide(2)"></span>
-                </div>
-        </div>
-        <br>
-            
-            
-        <script>
-            var slideIndex = 1;
-            showSlides(slideIndex);
-                
-            function plusSlides(n) {
-                showSlides(slideIndex += n);
-            }
-            
-            function currentSlide(n) {
-                showSlides(slideIndex = n);
-            }
-            
-            function showSlides(n) {
-                var i;
-                var slides = document.getElementsByClassName("mySlides");
-                var dots = document.getElementsByClassName("dot");
-                if (n > slides.length) {slideIndex = 1}    
-                if (n < 1) {slideIndex = slides.length}
-                for (i = 0; i < slides.length; i++) {
-                    slides[i].style.display = "none";  
-                }
-                for (i = 0; i < dots.length; i++) {
-                    dots[i].className = dots[i].className.replace(" active", "");
-                }
-                slides[slideIndex-1].style.display = "block";  
-                dots[slideIndex-1].className += " active";
-            }
-        </script>
 
 
         <div class="main-content-container" 
@@ -170,7 +110,7 @@
         flex-direction: column;
         flex-wrap: wrap;
         justify-content: space-evenly;
-        margin-top: 80px;
+        margin-top: 100px;
         padding-bottom: 30ox;">
             <div class="display-box" id="campaign-map-applet">
                 <div class="container-tab-bar">
@@ -224,17 +164,50 @@
                     <div id="character-creation-headbar-container"
                     style="
                     display: flex;
-                    flex-direction: row;">
-                        <div id="character-creation-name-input-field-container">
-                            <input type="text" id="new-character-name" value="name...">
-                            <br>
-                            <p style="margin-top: 4px; font-size: 8pt;">Character name</p>
+                    flex-direction: row;
+                    align-items: center;
+                    height: 200px;
+                    margin-bottom: 20px;">
+                        
+                        <div    class="cc-group-container"
+                                style=" margin-top: 0;
+                                        height: 220px;
+                                        justify-content: center;">
+
+                            <div id="character-creation-name-input-field-container">
+                                <input type="text" id="new-character-name" value="name...">
+                                <br>
+                                <p style="margin-top: 4px; font-size: 8pt;">Character name</p>
+                            </div>
+                            
+                            <div id="character-creation-headbar-misc-info-container">
+                                <select name="Character class" id="new-character-class">
+                                    <option selected disabled>Choose class</option>
+                                    <option value="barbarian">Barbarian</option>
+                                    <option value="bard">Bard</option>
+                                    <option value="cleric">Cleric</option>
+                                    <option value="druid">Druid</option>
+                                    <option value="fighter">Fighter</option>
+                                    <option value="monk">Monk</option>
+                                    <option value="paladin">Paladin</option>
+                                    <option value="ranger">Ranger</option>
+                                    <option value="rogue">Rogue</option>
+                                    <option value="sorcerer">Sorcerer</option>
+                                    <option value="warlock">Warlock</option>
+                                    <option value="wixard">Wizard</option>
+                                    <option value="artificer">Artificer</option>
+                                    <option value="blood-hunter">Blood Hunter</option>
+                                </select>
+                                <br>
+                                <p style="margin-top: 4px; font-size: 8pt;">Character class</p>
+                            </div>
+
                         </div>
                         
-                        <div id="character-creation-headbar-misc-info-container">
-                            <input type="text" id="new-character-class" value="class...">
-                            <br>
-                            <p style="margin-top: 4px; font-size: 8pt;">Character class</p>
+                        <div id="character-icon-container">
+                            <div id="character-icon">
+
+                            </div>
                         </div>
                     </div>
                     
@@ -812,12 +785,12 @@
                                                 <p>successes</p>
                                             </div>
                                             <div class="quantity-selectors-container">
-                                                <div    class="quantity-selectors"
-                                                        id="successes-selectors">
-                                                    <div class="quantity-selector"></div>
-                                                    <div class="quantity-selector"></div>
-                                                    <div class="quantity-selector"></div>
-                                                </div>
+                                                <div    class="quantity-selector"
+                                                        id="ds-success-first-selector"></div>
+                                                <div    class="quantity-selector"
+                                                        id="ds-success-second-selector"></div>
+                                                <div    class="quantity-selector"
+                                                        id="ds-success-third-selector"></div>
                                             </div>
                                         </div>
                                         <div    class="ds-subrow"
@@ -826,12 +799,9 @@
                                                 <p>failures</p>
                                             </div>
                                             <div class="quantity-selectors-container">
-                                                <div    class="quantity-selectors"
-                                                        id="failures-selectors">
-                                                    <div class="quantity-selector"></div>
-                                                    <div class="quantity-selector"></div>
-                                                    <div class="quantity-selector"></div>
-                                                </div>
+                                                <div class="quantity-selector"></div>
+                                                <div class="quantity-selector"></div>
+                                                <div class="quantity-selector"></div>
                                             </div>
                                         </div>
 
@@ -917,9 +887,10 @@
                     <div    id="file-menu"
                             class="control-btn-menu">
                         <ul>
-                           <li class="main-control-button">Open</li>
-                           <li class="main-control-button">Save</li>
-                           <li class="main-control-button">Exit</li>
+                           <li  class="main-control-button">Open</li>
+                           <li  class="main-control-button">Save</li>
+                           <li  class="main-control-button"
+                                onclick="turnExitPromptVisible();">Exit</li>
                         </ul>
                     </div>
                 <li class="main-control-button">Game</li>
@@ -937,6 +908,30 @@
     </div>
 
     
+
+    <div id="exit-prompt-container">
+        <div id="exit-prompt">
+            <p  style="margin-bottom: 0px;">
+                Are you sure you want to exit?</p>
+                <p  style="margin-bottom: 30px;">
+                    Any unsaved data will be lost!</p>
+                    <div id="exit-prompt-btn-container">
+                        <div    class="exit-prompt-btn"
+                                id="exit-prompt-yes-btn"
+                                onclick="close();">
+                        <p style="margin: 0;">YES</p>
+                    </div>
+                    
+                    <div    class="exit-prompt-btn"
+                    id="exit-prompt-no-btn"
+                    onclick="exitPromptDenied();">
+                    <p style="margin: 0;">NO</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
     <div    class="debug-message-box"
             style=" width: 250px;
