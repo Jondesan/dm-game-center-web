@@ -968,8 +968,11 @@ header{
     /* height: 200px; */
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: center;
+    align-items: center;
     /* align-content: flex-start; */
+    padding-top: 50px;
+    padding-bottom: 50px;
 
     border: 1px solid red;
 }
@@ -1116,12 +1119,13 @@ header{
 /* #region */
   
   /* HTML5 Audio player with playlist styles */
+
   .music-player {
     margin: 0;
-    margin-top: 50px;
-    margin-left: 50px;
-    width: 390px;
-    padding-bottom: 50px;
+    /* margin-top: 50px;
+    margin-left: 50px; */
+    width: 390px;/* 
+    padding-bottom: 50px; */
   }
   
   .player {
@@ -1129,7 +1133,7 @@ header{
                                 rgba(232,68,60,1) 0%,
                                 rgba(163,76,80,1) 50%,
                                 rgba(233,68,69,1) 100%);
-    height: 220px;
+    height: 400px;
     position: relative;
     border-radius: 4px;
     width: 100%;
@@ -1180,10 +1184,10 @@ header{
   }
   .controls {
     cursor: pointer;
-    left: 0px;
+    /* left: 0px; */
     position: absolute;
-    top: 65px;
-    left: 122px;
+    top: 265px;
+    left: 100px;
   }
   .controls .play,
   .controls .pause {
@@ -1194,11 +1198,16 @@ header{
   .controls .play,
   .controls .pause,
   .controls .rew,
-  .controls .fwd,
-  .controls .stop {
-    text-indent: -10000px;
+  .controls .fwd/* ,
+  .controls .stop */ {
+    /* text-indent: -10000px; */
     border: none;
     float: left;
+  }
+  .controls .stop {
+    position: absolute;  
+    top: 60px;
+    left: 65px;
   }
   .controls .rew,
   .controls .fwd,
@@ -1264,11 +1273,11 @@ header{
     cursor: pointer;
     /* z-index: 1; */
     right: 6.875em; /* 110 */
-    height: 15px;
+    height: 5px;
     left: 0px;
     position: absolute;
     width: 90%;
-    top: 170px;
+    top: 230px;
     margin: 0px 5%;
   }
   .novolume .progressbar {
@@ -1276,7 +1285,7 @@ header{
   }
   .progressbar div {
     width: 0%;
-    height: 15px;
+    height: 5px;
     position: absolute;
     left: 0;
     top: 0;
@@ -1296,7 +1305,7 @@ header{
     color: #ffffff;
     font-size: 14px;
     font-weight: bold;
-    bottom: 10px;
+    top: 210px;
     position: absolute;
     margin: 0px 5%;
     width: 90%;
@@ -1308,6 +1317,10 @@ header{
     font-size: 14px;
     font-weight: bold;
     float: left;
+    font-family: 'Assistant', sans-serif;
+  }
+  .time-duration {
+      float: right;
   }
   .volume .ui-slider-handle {
     background: url("img/mini-icons/spr.png") no-repeat scroll -201px -188px

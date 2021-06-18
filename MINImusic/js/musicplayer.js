@@ -120,10 +120,10 @@
           $.inArray("duration", this.settings.timeElements) != "-1"
             ? (durTimeElem = "<div class='time-duration'></div>")
             : (durTimeElem = " ");
-          timeSeparator =
+          /* timeSeparator =
             "<div class='time-separator'>" +
             this.settings.timeSeparator.replace(/\s/g, "&nbsp;") +
-            "</div>";
+            "</div>"; */
 
           for (var item in this.settings.timeElements) {
             if (item == 1) {
