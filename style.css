@@ -1062,6 +1062,24 @@ header{
     transition: 0.5s;
 }
 
+    .main_control_buttons #main-control-next {
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-top: 0;
+        margin-left: 0;
+        margin-right: 0;
+        right: 0;
+        position: relative;
+        height: 100%;
+    }
+
+.main-control-next-button {
+    width: 13px;
+    height: 25px;
+    background-image: url("img/next.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
 
 
 .main_control_bar {
@@ -1142,7 +1160,7 @@ header{
   .title,
   .artist {
     font-family: verdana;
-    left: 167px;
+    left: 100px;
     position: absolute;
   
     /* -moz-user-select: none;
@@ -1153,12 +1171,12 @@ header{
     color: #ffffff;
     font-size: 14px;
     font-weight: bold;
-    top: 23px;
+    top: 160px;
   }
   .artist {
     color: #eeeeee;
     font-size: 12px;
-    top: 40px;
+    top: 178px;
   }
   .pl {
     background: url(img/mini-icons/playlist.png) no-repeat;
@@ -1175,12 +1193,12 @@ header{
   .cover {
     border-radius: 5px 5px 5px 5px;
     border: 2px solid white;
-    height: 94px;
-    left: 20px;
+    height: 120px;
+    left: 135px;
     position: absolute;
     background-size: cover;
     top: 30px;
-    width: 94px;
+    width: 120px;
   }
   .controls {
     cursor: pointer;
@@ -1198,8 +1216,7 @@ header{
   .controls .play,
   .controls .pause,
   .controls .rew,
-  .controls .fwd/* ,
-  .controls .stop */ {
+  .controls .fwd {
     /* text-indent: -10000px; */
     border: none;
     float: left;
@@ -1239,11 +1256,11 @@ header{
     display: block;
   }
   .volume {
-    height: 11px;
-    left: 230px;
+    height: 6px;
+    right: 15px;
     position: absolute;
-    top: 142px;
-    width: 140px;
+    top: 380px;
+    width: 120px;
   }
   .mute .volume-btn {
     background: url(img/mini-icons/volume-off.png) no-repeat;
@@ -1254,17 +1271,17 @@ header{
     width: 20px;
     float: left;
     position: relative;
-    top: -4px;
+    top: -6px;
   }
   .volume-adjust {
-    height: 11px;
+    height: 6px;
     position: relative;
     width: 80%;
     background: #fff;
     float: right;
   }
   .volume-adjust > div > div {
-    height: 11px;
+    height: 6px;
     background: #151b48;
   }
   .progressbar {
