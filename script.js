@@ -49,11 +49,11 @@ $(function(){
 
 class Character
 {
-    constructor(name, sex){
+    constructor(name, sex, charclass){
         this.name = name;
         this.sex = sex;
         this.race = null;
-        this.class = null;
+        this.charclass = charclass;
         this.level = 1;
         this.experience = 0;
         this.hp = 0;
@@ -126,18 +126,23 @@ for(i = 0; i < classList.length; i++) {
 
 const addCharacterBtn = document.getElementById('add-character-btn');
 
-if(addCharacterBtn){
+/* if(addCharacterBtn){
     addCharacterBtn.addEventListener(   'click',
                                         addCharacterToList(Character(
                                             document.getElementById('new-character-name').value,
-                                            0)));
-}
+                                            0,
+                                            $("#new-character-class").find(":selected").text() )));
+} */
 
 
 
 function addCharacterToList()
 {
-    let newCharacter = new Character(document.getElementById('new-character-name').value,0)
+    let newCharacter = new Character(   document.getElementById('new-character-name').value,
+                                        0,
+                                        $("#new-character-class option:selected").text())
+    
+    
     
     if(character_list.length != 0)
     {
@@ -250,13 +255,13 @@ function turnMusicPlayerOn() {
         $("#mmp-shide-btn-icon").animate({height: "10px"},{duration: 200, queue: false});
         $("#mmp-shide-btn-icon").animate({width: "10px"},{duration: 200, queue: false});
         $("#mmp-shide-btn-icon").animate({backgroundColor: "transparent"},{duration: 200, queue: false});
-        $(".music-player-container").stop(true).fadeOut("fast");
+        $(".music-player-container").stop(true).slideUp("slow");
     }else{
         musicPlayerOn = true;
         $("#mmp-shide-btn-icon").animate({height: "3px"},{duration: 200, queue: false});
         $("#mmp-shide-btn-icon").animate({width: "14px"},{duration: 200, queue: false});
         $("#mmp-shide-btn-icon").animate({backgroundColor: "white"},{duration: 200, queue: false});
-        $(".music-player-container").stop(true).fadeIn("slow");
+        $(".music-player-container").stop(true).slideDown("slow");
     };
 };
 
@@ -270,13 +275,13 @@ function turnCharacterCreationOn() {
         $("#cc-shide-btn-icon").animate({height: "10px"},{duration: 200, queue: false});
         $("#cc-shide-btn-icon").animate({width: "10px"},{duration: 200, queue: false});
         $("#cc-shide-btn-icon").animate({backgroundColor: "transparent"},{duration: 200, queue: false});
-        $(".character-creation-container").stop(true).fadeOut("fast");
+        $(".character-creation-container").stop(true).slideUp(800);
     }else{
         characterCreationAppletOn = true;
         $("#cc-shide-btn-icon").animate({height: "3px"},{duration: 200, queue: false});
         $("#cc-shide-btn-icon").animate({width: "14px"},{duration: 200, queue: false});
         $("#cc-shide-btn-icon").animate({backgroundColor: "white"},{duration: 200, queue: false});
-        $(".character-creation-container").stop(true).fadeIn("slow");
+        $(".character-creation-container").stop(true).slideDown(800);
     };
 };
 
@@ -286,16 +291,22 @@ var campaignMapAppletOn = true;
 function turnCampaignMapOn() {
     if(campaignMapAppletOn){
         campaignMapAppletOn = false;
-        $("#camp-map-shide-btn-icon").animate({height: "10px"},{duration: 200, queue: false});
-        $("#camp-map-shide-btn-icon").animate({width: "10px"},{duration: 200, queue: false});
-        $("#camp-map-shide-btn-icon").animate({backgroundColor: "transparent"},{duration: 200, queue: false});
-        $(".main_console_wrapper").stop(true).fadeOut("fast");
+        /* $("#camp-map-shide-btn-icon").animate({height: "10px"},{duration: 200, queue: false});
+        $("#camp-map-shide-btn-icon").animate({width: "10px"},{duration: 200, queue: false}); */
+        /* $("#camp-map-shide-btn-icon").animate({backgroundColor: "transparent"},{duration: 200, queue: false}); */
+        $("#camp-map-shide-btn-icon").fadeTo("fast",0.6,function(){
+            $(this).css("background-image", "url('img/svg/126-up-arrow-1.svg')");
+        }).fadeTo("slow", 1);
+        $(".main_console_wrapper").stop(true).slideUp(800);
     }else{
         campaignMapAppletOn = true;
-        $("#camp-map-shide-btn-icon").animate({height: "3px"},{duration: 200, queue: false});
+        /* $("#camp-map-shide-btn-icon").animate({height: "3px"},{duration: 200, queue: false});
         $("#camp-map-shide-btn-icon").animate({width: "14px"},{duration: 200, queue: false});
-        $("#camp-map-shide-btn-icon").animate({backgroundColor: "white"},{duration: 200, queue: false});
-        $(".main_console_wrapper").stop(true).fadeIn("slow");
+        $("#camp-map-shide-btn-icon").animate({backgroundColor: "white"},{duration: 200, queue: false}); */
+        $("#camp-map-shide-btn-icon").fadeTo("fast",0.6,function(){
+            $(this).css("background-image", "url(img/svg/093-down-arrow-1.svg)");
+        }).fadeTo("slow", 1);
+        $(".main_console_wrapper").stop(true).slideDown(800);
     };
 };
 
@@ -306,10 +317,10 @@ var fileMenuOn = false;
 function turnFileMenuOn() {
     if(fileMenuOn){
         fileMenuOn = false;
-        $("#file-menu").stop(true).fadeOut("fast");
+        $("#file-menu").stop(true,true).fadeOut("fast");
     }else{
         fileMenuOn = true;
-        $("#file-menu").stop(true).fadeIn("fast");
+        $("#file-menu").stop(true,true).show("slide", { direction: "left" }, 600);
     }
 };
 
@@ -319,7 +330,7 @@ var navigationOn = false;
 
 function menuDisplay()    
 {   
-        if (navigationOn) {
+    if (navigationOn) {
         navigationOn = false;
         $(".main_control_bar").stop(true).fadeOut({duration: "500", queue: true});
         /* $(".main_control_container").css(); */
@@ -327,7 +338,8 @@ function menuDisplay()
         navigationOn = true;
         /* $(".main_control_container").show(); */
         $(".main_control_bar").stop(true).fadeIn({duration: "500", queue: true});
-        $(".main_control_bar").css("display","flex");
+        /* show("slide", { direction: "left" }, 600); */
+        $(".main_control_bar").css("display","block");
         if(fileMenuOn){
             fileMenuOn = false;
             $("#file-menu").stop(true).hide();

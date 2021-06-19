@@ -118,10 +118,10 @@
                         <div class="shide-btn-gfx-container">
 
                             <div    id="camp-map-shide-btn-icon"
-                                    style=" border: 1px solid white;
-                                            background-color: white;
-                                            width: 14px;
-                                            height: 3px;
+                                    style=" background-image: url(img/svg/093-down-arrow-1.svg);
+                                            background-size: contain;
+                                            width: 18px;
+                                            height: 18px;
                                             display: absolute;"></div>
                         </div>
                     </div>
@@ -862,6 +862,10 @@
                             </li>
                             <li data-cover="https://images.genius.com/9861187f94f33a39e39283eaaf107e6f.1000x1000x1.jpg"
                                 data-artist="Bo Burnham">
+                                <a href="music/bo-burnham-problematic.mp3">Problematic</a>
+                            </li>
+                            <li data-cover="https://images.genius.com/9861187f94f33a39e39283eaaf107e6f.1000x1000x1.jpg"
+                                data-artist="Bo Burnham">
                                 <a href="music/bo-burnham-how-the-world-works.mp3">How the World Works</a>
                             </li>
                         </ul>
@@ -881,35 +885,43 @@
 
     <div class="main_control_container">
         <div class="main_control_bar", id="main_control_bar">
-            <ul class="main_control_buttons">
-                <li onclick="turnFileMenuOn();"
-                    id="file-btn"
-                    class="main-control-button">
-                        File
+
+            <div    class="main-control-buttons-container"
+                    style=" display: flex;
+                            margin-top: 7px;
+                            margin-bottom: 3px;">            
+                <ul class="main_control_buttons">
+                    <li onclick="turnFileMenuOn();"
+                        id="file-btn"
+                        class="main-control-button">
+                            File
+                        </li>
+                        <div    id="file-menu"
+                                class="control-btn-menu">
+                            <ul>
+                            <li  class="main-control-button">Open</li>
+                            <li  class="main-control-button">Save</li>
+                            <li  class="main-control-button"
+                                    onclick="turnExitPromptVisible();">Exit</li>
+                            </ul>
+                        </div>
+                    <li class="main-control-button">Game</li>
+                    <li class="main-control-button">Characters</li>
+                    <li class="main-control-button">Dungeons</li>
+                    <li class="main-control-button">Enemies</li>
+                    <li class="main-control-button">Maps</li>
+                    <li class="main-control-button" id="main-control-next">
+                        <div class="main-control-next-button"></div>
                     </li>
-                    <div    id="file-menu"
-                            class="control-btn-menu">
-                        <ul>
-                           <li  class="main-control-button">Open</li>
-                           <li  class="main-control-button">Save</li>
-                           <li  class="main-control-button"
-                                onclick="turnExitPromptVisible();">Exit</li>
-                        </ul>
-                    </div>
-                <li class="main-control-button">Game</li>
-                <li class="main-control-button">Characters</li>
-                <li class="main-control-button">Dungeons</li>
-                <li class="main-control-button">Enemies</li>
-                <li class="main-control-button">Maps</li>
-                <li class="main-control-button" id="main-control-next">
-                    <div class="main-control-next-button"></div>
-                </li>
-            </ul>
+                </ul>
+            </div>
+            
         </div>
         <a class="control_bar_display_btn" onclick="menuDisplay();">
-        <div style="border: 1px solid white; width: 15px; margin-bottom: 3px;"></div>
-        <div style="border: 1px solid white; width: 15px; margin-bottom: 3px;"></div>
-        <div style="border: 1px solid white; width: 15px;"></div>
+        <!--<div style="border: 1px solid white; width: 15px; margin-bottom: 3px;"></div>
+            <div style="border: 1px solid white; width: 15px; margin-bottom: 3px;"></div>
+            <div style="border: 1px solid white; width: 15px;"></div> -->
+            <div class="control-bar-display-icon-container"></div>
         </a>
     </div>
 

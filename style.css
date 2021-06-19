@@ -90,6 +90,11 @@ body {
     margin: 0;
     overflow: auto;
 }
+body::-webkit-scrollbar {
+    display: none;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
 
 p {
     font-family: 'Nobile', sans-serif;
@@ -278,6 +283,7 @@ header{
         border-radius: 5px;
         border: 1px solid white;
         background-color: #e8443c;
+        background-size: contain;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -1017,16 +1023,26 @@ header{
 }
 
 .control_bar_display_btn {
-    padding: 10px;
+    padding: 5px;
     margin-left: 12px;
     border-radius: 5px;
+    width: 25px;
+    height: 25px;
     text-decoration: none;
+    border: 2px solid black;
     color: white;
     background-color: #e8443c;
-    display: inline-block;
+    display: flex;
     position: absolute;
     transition: border-radius 0.5s, background-color 0.5s;
 }
+    .control-bar-display-icon-container {
+        background-image: url("img/svg/165-menu.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 25px;
+        height: 25px;
+    }
 
 .control_bar_display_btn:hover {
     border-radius: 30%;
@@ -1070,15 +1086,15 @@ header{
         margin-right: 0;
         right: 0;
         position: relative;
-        height: 100%;
+        /* height: 100%; */
     }
 
 .main-control-next-button {
-    width: 13px;
+    width: 25px;
     height: 25px;
-    background-image: url("img/next.png");
+    background-image: url("img/svg/083-chevron.svg");
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
 }
 
 
@@ -1095,6 +1111,7 @@ header{
     flex-shrink: 1;
     justify-content: center;
     align-items: center;
+    margin: auto;
 }
 
 
@@ -1147,14 +1164,13 @@ header{
   }
   
   .player {
-    background: linear-gradient(    0deg, 
-                                rgba(232,68,60,1) 0%,
-                                rgba(163,76,80,1) 50%,
-                                rgba(233,68,69,1) 100%);
+    background-color: rgb(240, 240, 240);
     height: 400px;
     position: relative;
-    border-radius: 4px;
+    border-radius: 40px 40px 0px 0px;
     width: 100%;
+    display: flex;
+    justify-content: center;
     /* z-index: 2; */
   }
   .title,
@@ -1168,13 +1184,13 @@ header{
     -ms-user-select: none; */
   }
   .title {
-    color: #ffffff;
+    color: #000000;
     font-size: 14px;
     font-weight: bold;
     top: 160px;
   }
   .artist {
-    color: #eeeeee;
+    color: #3d3d3d;
     font-size: 12px;
     top: 178px;
   }
@@ -1192,7 +1208,7 @@ header{
   }
   .cover {
     border-radius: 5px 5px 5px 5px;
-    border: 2px solid white;
+    border: 4px solid rgb(0, 0, 0);
     height: 120px;
     left: 135px;
     position: absolute;
@@ -1203,9 +1219,8 @@ header{
   .controls {
     cursor: pointer;
     /* left: 0px; */
-    position: absolute;
+    position: relative;
     top: 265px;
-    left: 100px;
   }
   .controls .play,
   .controls .pause {
@@ -1223,31 +1238,31 @@ header{
   }
   .controls .stop {
     position: absolute;  
-    top: 60px;
-    left: 65px;
+    top: 65px;
+    left: 60px;
   }
   .controls .rew,
   .controls .fwd,
   .controls .stop {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     margin: 5px 5px 5px 5px;
   }
   .controls .play {
-    background: url(img/mini-icons/play.png) no-repeat;
+    background: url(img/svg/022-play.svg) no-repeat;
   }
   .controls .pause {
-    background: url(img/mini-icons/pause.png) no-repeat;
+    background: url(img/svg/020-pause.svg) no-repeat;
     display: none;
   }
   .controls .rew {
-    background: url(img/mini-icons/rewind.png) no-repeat;
+    background: url(img/svg/025-rewind.svg) no-repeat;
   }
   .controls .fwd {
-    background: url(img/mini-icons/next.png) no-repeat;
+    background: url(img/svg/033-fast-forward.svg) no-repeat;
   }
   .controls .stop {
-    background: url(img/mini-icons/stop.png) no-repeat;
+    background: url(img/svg/021-stop.svg) no-repeat;
   }
   .hidden {
     display: none;
@@ -1255,18 +1270,26 @@ header{
   .controls .visible {
     display: block;
   }
+  .controls div:active{
+      transform: translateY(3px);
+  }
+  /* .controls div:hover {
+      opacity: 0.5;
+      transition: opacity 0.3s;
+  } */
   .volume {
     height: 6px;
     right: 15px;
     position: absolute;
+    cursor: pointer;
     top: 380px;
     width: 120px;
   }
   .mute .volume-btn {
-    background: url(img/mini-icons/volume-off.png) no-repeat;
+    background: url(img/svg/156-mute.svg) no-repeat;
   }
   .volume-btn {
-    background: url(img/mini-icons/volume-up.png) no-repeat;
+    background: url(img/svg/157-volume.svg) no-repeat;
     height: 20px;
     width: 20px;
     float: left;
@@ -1277,15 +1300,15 @@ header{
     height: 6px;
     position: relative;
     width: 80%;
-    background: #fff;
+    background: rgb(209, 209, 209);
     float: right;
   }
   .volume-adjust > div > div {
     height: 6px;
-    background: #151b48;
+    background: #126ca8;
   }
   .progressbar {
-    background-color: #fff;
+    background-color: rgb(209, 209, 209);
     border-radius: 6px;
     cursor: pointer;
     /* z-index: 1; */
@@ -1308,13 +1331,13 @@ header{
     top: 0;
   }
   .bar-loaded {
-    background-color: #ffffff;
+    background-color: rgb(209, 209, 209);
     border-radius: 5px;
     display: none;
     /* z-index: 1; */
   }
   .bar-played {
-    background: #151b48;
+    background: #126ca8;
     border-radius: 5px;
     /* z-index: 2; */
   }
@@ -1330,7 +1353,7 @@ header{
   .time-current,
   .time-duration,
   .time-separator {
-    color: #ffffff;
+    color: #000000;
     font-size: 14px;
     font-weight: bold;
     float: left;
@@ -1346,14 +1369,13 @@ header{
     width: 13px;
   }
   .playlist {
-    background: linear-gradient(0deg, rgba(38,76,94,1) 0%, rgba(73,146,181,1) 50%, rgba(38,76,94,1) 100%);
-    border-radius: 0 0 5px 5px;
+    background-color: white;
+    border-radius: 0 0 40px 40px;
     list-style-type: none;
     margin: -10px 0 0 2px;
-    padding-bottom: 10px;
+    padding-bottom: 30px;
     padding-top: 15px;
     position: relative;
-    width: 95%;
     margin: 0px auto;
   }
   .playlist li,
@@ -1367,7 +1389,7 @@ header{
   }
   .playlist li > a,
   .playlist div > a {
-    color: white;
+    color: black;
     text-decoration: none;
   }
   .playlist li.active,
