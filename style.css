@@ -865,6 +865,75 @@ header{
                 width: 50px;
             }
 
+            .increment-btn-container {
+                flex-grow: 1;
+                display: flex;
+                justify-content: space-around;
+                margin-left: 30px;
+
+                border: 1px solid red;
+            }
+                .increment-btns-column {
+                    /* flex-grow: 1; */
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    align-content: center;
+                    justify-content: center;
+
+                    border: 1px solid blue;
+                }
+                    .increment-btns-column .increment-btn {
+                        height: 20px;
+                        width: 20px;
+                        text-align: center;
+                    }
+                    .increment-btns-column .increment-btn:hover {
+                        opacity: 0.5;
+                        transition: opacity 0.5s;
+                    }
+
+                    .increment-btn {
+                        /* background-color: limegreen; */
+                        border-radius: 5px;
+                        margin-bottom: 4px;
+                        border: 1px solid black;
+                    }
+
+                        #number-of-hit-dice-plus,
+                        #hit-dice-faces-plus {
+                            background-color: limegreen;
+                            border-radius: 5px;
+                            margin-bottom: 4px;
+                            border: 1px solid black;
+                        }
+
+                        .plus-btn-horizontal-line {
+                            position: relative;
+                            top: 8px;
+                            left: 2px;
+                            width: 16px;
+                            height: 4px;
+                            border-radius: 2px;
+                            background-color: white;
+                        }
+                        .plus-btn-vertical-line {
+                            position: relative;
+                            top: -2px;
+                            left: 8px;
+                            width: 4px;
+                            height: 16px;
+                            border-radius: 2px;
+                            background-color: white;
+                        }
+
+                    #number-of-hit-dice-minus,
+                    #hit-dice-faces-minus {
+                        background-color: tomato;
+                        border-radius: 5px;
+                        border: 1px solid black;
+                    }
+
             #current-hit-dice-value {
                 display: flex;
                 flex-direction: row;

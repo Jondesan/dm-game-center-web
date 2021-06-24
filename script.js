@@ -46,6 +46,10 @@ $(function(){
 
 /* const {character} = require('scripts/character.js'); */
 
+$(document).ready(function() {
+
+
+
 
 class Character
 {
@@ -180,6 +184,9 @@ for(i = 0; i < 6; i++) {savingThrows[i] = false};
 var skillsThrows = [];
 for(i = 0; i < 18; i++) {skillsThrows[i] = false};
 
+var deathsavingThrowsSuc = [];
+for(i = 0; i < 3; i++) {deathsavingThrowsSuc[i] = false};
+
 var skills = [  'acrobatics-proficiency-selector',
                 'animal-handling-proficiency-selector',
                 'arcana-proficiency-selector',
@@ -205,6 +212,10 @@ var abilities =  [  'strength-proficiency-selector',
                     'intelligence-proficiency-selector',
                     'wisdom-proficiency-selector',
                     'charisma-proficiency-selector'];
+
+var deathSavingThrowsSuccesses = [  'ds-success-first-selector',
+                                    'ds-success-second-selector',
+                                    'ds-success-third-selector'];
 
 function validateChecks(idIndex) {
     
@@ -246,10 +257,33 @@ function validateSkillChecks(idIndex) {
     };
 };
 
+function validateSavingThrowsSuccesses(idIndex) {
+    
+    var checked = 0;
+    
+    for(i = 0; i < deathsavingThrowsSuc.length; i++) {
+        if(deathsavingThrowsSuc[i]){checked++};
+    };
+
+    if(deathsavingThrowsSuc[idIndex]){
+        document.getElementById(deathSavingThrowsSuccesses[idIndex]).style.backgroundColor = 'white';
+        deathsavingThrowsSuc[idIndex] = false;
+    }/* else if(checked == 2){
+        document.getElementById('completion-message').innerHTML = 'Two have already been selected!';
+        document.getElementById('completion-message').style.color = 'red';
+    } */else{
+        document.getElementById(deathSavingThrowsSuccesses[idIndex]).style.backgroundColor = 'darkgrey';
+        deathsavingThrowsSuc[idIndex] = true;
+    };
+};
+
+
+
 
 var musicPlayerOn = true;
 
-function turnMusicPlayerOn() {
+
+$("#music-player-shide-btn").click( function() {
     if(musicPlayerOn){
         musicPlayerOn = false;
         $("#mmp-shide-btn-icon").animate({height: "10px"},{duration: 200, queue: false});
@@ -263,13 +297,13 @@ function turnMusicPlayerOn() {
         $("#mmp-shide-btn-icon").animate({backgroundColor: "white"},{duration: 200, queue: false});
         $(".music-player-container").stop(true).slideDown("slow");
     };
-};
+});
 
 
 
 var characterCreationAppletOn = true;
 
-function turnCharacterCreationOn() {
+$("#character-creation-shide-btn").click( function() {
     if(characterCreationAppletOn){
         characterCreationAppletOn = false;
         $("#cc-shide-btn-icon").animate({height: "10px"},{duration: 200, queue: false});
@@ -283,12 +317,12 @@ function turnCharacterCreationOn() {
         $("#cc-shide-btn-icon").animate({backgroundColor: "white"},{duration: 200, queue: false});
         $(".character-creation-container").stop(true).slideDown(800);
     };
-};
+});
 
 
 var campaignMapAppletOn = true;
 
-function turnCampaignMapOn() {
+$("#campaign-map-shide-btn").click( function() {
     if(campaignMapAppletOn){
         campaignMapAppletOn = false;
         /* $("#camp-map-shide-btn-icon").animate({height: "10px"},{duration: 200, queue: false});
@@ -308,7 +342,40 @@ function turnCampaignMapOn() {
         }).fadeTo("slow", 1);
         $(".main_console_wrapper").stop(true).slideDown(800);
     };
-};
+});
+
+
+
+
+var hitDiceIncrementsDict = [   "number-of-hit-dice-plus",
+                                "number-of-hit-dice-minus",
+                                "hit-dice-faces-plus",
+                                "hit-dice-faces-minus"];
+
+$(".increment-btn").click( function(event) {
+    var divId = $(this).attr('id');
+    var textArr = Array.from($("#total-hit-dice-input-value").val());
+    var textFinal = "";
+    console.log(textArr);
+    if(divId == hitDiceIncrementsDict[0]) {
+        ++textArr[0];
+        textFinal = textArr.join("");
+    }
+
+
+    console.log({"Id is: ": divId});
+    console.log({textFinal});
+    $("#total-hit-dice-input-value").val(textFinal);
+});
+
+
+/*
+$('.status').click(function(event) {
+    var status = $(this).attr('id');
+});
+ */
+
+
 
 
 
@@ -360,4 +427,4 @@ function debugMessage() {
     }); */
 };
 
-
+});

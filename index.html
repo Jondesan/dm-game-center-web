@@ -21,11 +21,11 @@
         <meta name="theme-color" content="#ffffff">
 
 
-        <script type="text/javascript" src="script.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
         <script src="scripts/jquery-3.6.0.js"></script>
         <script src="scripts/jquery-ui.min.js"></script>
         <script src="MINImusic/js/musicplayer.js"></script>
+        <script type="text/javascript" src="script.js"></script>
 
         <!-- <script>
             window.onbeforeunload = function () {
@@ -114,7 +114,8 @@
         padding-bottom: 30ox;">
             <div class="display-box" id="campaign-map-applet">
                 <div class="container-tab-bar">
-                    <div class="container-tab-bar-shide-btn" onclick="turnCampaignMapOn();">
+                    <div    class="container-tab-bar-shide-btn"
+                            id="campaign-map-shide-btn">
                         <div class="shide-btn-gfx-container">
 
                             <div    id="camp-map-shide-btn-icon"
@@ -146,7 +147,8 @@
             
             <div class="display-box" id="character-creation-applet">
                 <div class="container-tab-bar">
-                    <div class="container-tab-bar-shide-btn" onclick="turnCharacterCreationOn();">
+                    <div    class="container-tab-bar-shide-btn"
+                            id="character-creation-shide-btn">
                         <div class="shide-btn-gfx-container">
 
                             <div    id="cc-shide-btn-icon"
@@ -756,7 +758,6 @@
                                     </div>
 
                                 </div>
-
                                 <div    class="cc-group-container"
                                         id="hit-dice-death-saves-container">
                                     <div id="hit-dice-container">
@@ -767,6 +768,30 @@
                                             <input  type="text"
                                                     id="total-hit-dice-input-value"
                                                     value="1d10">
+                                            <div class="increment-btn-container">
+                                                <div class="increment-btns-column">
+                                                    <div    class="increment-btn"
+                                                            id="number-of-hit-dice-plus">
+                                                        <div class="plus-btn-horizontal-line"></div>
+                                                        <div class="plus-btn-vertical-line"></div>
+                                                    </div>
+                                                    <div    class="increment-btn"
+                                                            id="number-of-hit-dice-minus">
+                                                        <div class="plus-btn-horizontal-line"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="increment-btns-column">
+                                                    <div    class="increment-btn"
+                                                            id="hit-dice-faces-plus">
+                                                        <div class="plus-btn-horizontal-line"></div>
+                                                        <div class="plus-btn-vertical-line"></div>
+                                                    </div>
+                                                    <div    class="increment-btn"
+                                                            id="hit-dice-faces-minus">
+                                                        <div class="plus-btn-horizontal-line"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                         
                                         <div id="current-hit-dice-value">
@@ -785,11 +810,14 @@
                                             </div>
                                             <div class="quantity-selectors-container">
                                                 <div    class="quantity-selector"
-                                                        id="ds-success-first-selector"></div>
+                                                        id="ds-success-first-selector"
+                                                        onclick="validateSavingThrowsSuccesses(0);"></div>
                                                 <div    class="quantity-selector"
-                                                        id="ds-success-second-selector"></div>
+                                                        id="ds-success-second-selector"
+                                                        onclick="validateSavingThrowsSuccesses(1);"></div>
                                                 <div    class="quantity-selector"
-                                                        id="ds-success-third-selector"></div>
+                                                        id="ds-success-third-selector"
+                                                        onclick="validateSavingThrowsSuccesses(2);"></div>
                                             </div>
                                         </div>
                                         <div    class="ds-subrow"
@@ -831,7 +859,8 @@
 
             <div class="display-box" id="mini-music-player">
                 <div class="container-tab-bar">
-                    <div class="container-tab-bar-shide-btn" onclick="turnMusicPlayerOn();">
+                    <div    class="container-tab-bar-shide-btn"
+                            id="music-player-shide-btn">
                         <div class="shide-btn-gfx-container">
 
                             <div    id="mmp-shide-btn-icon"
