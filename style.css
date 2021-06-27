@@ -1545,4 +1545,57 @@ header{
         background-color: #e8443c;
     }
 
-/* #endregion */
+    
+    /* #endregion */
+
+    
+#goodbye-message {
+    font-size: 28pt;
+    font-weight: bold;
+    letter-spacing: 10px;
+}
+
+#restart-btn {
+    width: 100px;
+    height: 30px;
+    border: 2px solid grey;
+    border-radius: 5px;
+    background-color: #e8443c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16pt;
+    font-weight: bold;
+}
+
+#restart-btn:hover {
+    background-color: #ec635b;
+    cursor: pointer;
+}
+    
+    
+#debug-btn {
+    height: 50px;
+    width: 50px;
+    display: flex;
+    position: fixed;
+    bottom: 200px;
+    right: 30px;
+    color: white;
+    border: 3px solid pink;
+    background-color: rgb(153, 153, 153);
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+
+    font-weight: bold;
+}
+#debug-btn p{
+    font-size: 8pt;
+    margin: 0;
+}
+
+#debug-btn:hover {
+    background-color: rgb(83, 83, 83);
+    cursor: pointer;
+}

@@ -111,7 +111,8 @@
         flex-wrap: wrap;
         justify-content: space-evenly;
         margin-top: 100px;
-        padding-bottom: 30ox;">
+        padding-bottom: 30ox;
+        border: 0px solid black;">
             <div class="display-box" id="campaign-map-applet">
                 <div class="container-tab-bar">
                     <div    class="container-tab-bar-shide-btn"
@@ -920,8 +921,7 @@
                             margin-top: 7px;
                             margin-bottom: 3px;">            
                 <ul class="main_control_buttons">
-                    <li onclick="turnFileMenuOn();"
-                        id="file-btn"
+                    <li id="file-btn"
                         class="main-control-button">
                             File
                         </li>
@@ -931,7 +931,7 @@
                             <li  class="main-control-button">Open</li>
                             <li  class="main-control-button">Save</li>
                             <li  class="main-control-button"
-                                    onclick="turnExitPromptVisible();">Exit</li>
+                                id="main-control-exit-btn">Exit</li>
                             </ul>
                         </div>
                     <li class="main-control-button">Game</li>
@@ -946,7 +946,7 @@
             </div>
             
         </div>
-        <a class="control_bar_display_btn" onclick="menuDisplay();">
+        <a class="control_bar_display_btn" >
         <!--<div style="border: 1px solid white; width: 15px; margin-bottom: 3px;"></div>
             <div style="border: 1px solid white; width: 15px; margin-bottom: 3px;"></div>
             <div style="border: 1px solid white; width: 15px;"></div> -->
@@ -964,14 +964,12 @@
                     Any unsaved data will be lost!</p>
                     <div id="exit-prompt-btn-container">
                         <div    class="exit-prompt-btn"
-                                id="exit-prompt-yes-btn"
-                                onclick="close();">
+                                id="exit-prompt-yes-btn">
                         <p style="margin: 0;">YES</p>
                     </div>
                     
                     <div    class="exit-prompt-btn"
-                    id="exit-prompt-no-btn"
-                    onclick="exitPromptDenied();">
+                            id="exit-prompt-no-btn">
                     <p style="margin: 0;">NO</p>
                 </div>
             </div>
@@ -998,6 +996,10 @@
         <p  id="debug-msg-box-text"
             style=" margin-left: 10px;
                     color: greenyellow;"></p>
+    </div>
+
+    <div    id="debug-btn">
+            <p>DEBUG</p>
     </div>
 
     </body>

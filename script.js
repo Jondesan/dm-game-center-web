@@ -48,9 +48,12 @@ $(function(){
 
 $(document).ready(function() {
 
-
-
-
+/* $("body")
+    .hide(0)
+    .delay(500)
+    .fadeIn(1000); */
+    
+    
 class Character
 {
     constructor(name, sex, charclass){
@@ -88,23 +91,75 @@ var character_list = [];
 
 
 
-var exitPromptVisible = false;
 
-function exitPromptDenied(){
+var exitPromptVisible = false;
+var applicationRunning = true;
+
+$("#exit-prompt-no-btn").click( function(event) {
     $("#exit-prompt-container").stop(true).fadeOut("fast");
     exitPromptVisible = false;
-};
+});
 
-function exitPromptAccepted(){
+$("#exit-prompt-yes-btn"/* "#debug-btn" */).click( function(event) {
+    
+    if(applicationRunning){
+        applicationRunning = false;
 
-};
+        $(".main-content-container div").fadeToggle(1000);
+        $("#exit-prompt").fadeToggle(500);
+        navigationOn = false;
+        $(".main_control_bar").stop(true).fadeOut({duration: "500", queue: true});
+        $(".control_bar_display_btn").stop(true).fadeOut(500);
+        $(".main-content-container").delay(800).animate(
+            {   height: "700",
+                borderRadius: "100px",
+                marginLeft: "40px",
+                marginRight: "40px"},
+            1000,
+            function() {
+                $(this).css(
+                    {   display: "flex",
+                        "justify-content": "center",
+                        "align-items": "center"});
+                var goodbye = $("<p id='goodbye-message'></p>")
+                    .text("Goodbye!");
+                var restartBtn = $("<div id='restart-btn'></div>")
+                    .text("Restart");
+                $(".main-content-container")
+                    .append(goodbye, restartBtn);
+                $("#goodbye-message")
+                    .hide(  0,
+                            "linear",
+                            function() {
+                                $("#goodbye-message")
+                                    .fadeIn("slow")
+                                    .animate(
+                                        {"letter-spacing": "20px"},
+                                        {duration: 3000, easing: "swing", queue: false})
+                            });
+                $("#restart-btn")
+                    .hide(  0,
+                            "linear",
+                            function() {
+                                $("#restart-btn")
+                                    .fadeIn("slow");
+                            });
+            });
+        $(document).on("click", "#restart-btn", function() {
+            console.log("Restart initiated!");
+            location.reload();
+        } );
+    }
+});
 
-function turnExitPromptVisible(){
+
+
+$("#main-control-exit-btn").click( function(event) {
     if(!exitPromptVisible){
         exitPromptVisible = true;
         $("#exit-prompt-container").stop(true).fadeIn("fast");
     }
-};
+});
 
 
 
@@ -325,18 +380,12 @@ var campaignMapAppletOn = true;
 $("#campaign-map-shide-btn").click( function() {
     if(campaignMapAppletOn){
         campaignMapAppletOn = false;
-        /* $("#camp-map-shide-btn-icon").animate({height: "10px"},{duration: 200, queue: false});
-        $("#camp-map-shide-btn-icon").animate({width: "10px"},{duration: 200, queue: false}); */
-        /* $("#camp-map-shide-btn-icon").animate({backgroundColor: "transparent"},{duration: 200, queue: false}); */
         $("#camp-map-shide-btn-icon").fadeTo("fast",0.6,function(){
             $(this).css("background-image", "url('img/svg/126-up-arrow-1.svg')");
         }).fadeTo("slow", 1);
         $(".main_console_wrapper").stop(true).slideUp(800);
     }else{
         campaignMapAppletOn = true;
-        /* $("#camp-map-shide-btn-icon").animate({height: "3px"},{duration: 200, queue: false});
-        $("#camp-map-shide-btn-icon").animate({width: "14px"},{duration: 200, queue: false});
-        $("#camp-map-shide-btn-icon").animate({backgroundColor: "white"},{duration: 200, queue: false}); */
         $("#camp-map-shide-btn-icon").fadeTo("fast",0.6,function(){
             $(this).css("background-image", "url(img/svg/093-down-arrow-1.svg)");
         }).fadeTo("slow", 1);
@@ -352,28 +401,66 @@ var hitDiceIncrementsDict = [   "number-of-hit-dice-plus",
                                 "hit-dice-faces-plus",
                                 "hit-dice-faces-minus"];
 
+var diceFaces = [   "4",
+                    "6",
+                    "8",
+                    "10",
+                    "12",
+                    "20"];
+
 $(".increment-btn").click( function(event) {
     var divId = $(this).attr('id');
-    var textArr = Array.from($("#total-hit-dice-input-value").val());
+    var textArr = $("#total-hit-dice-input-value").val().split("d");
     var textFinal = "";
     console.log(textArr);
     if(divId == hitDiceIncrementsDict[0]) {
-        ++textArr[0];
-        textFinal = textArr.join("");
+        if(textArr[0] < 20) {
+            ++textArr[0];
+            textFinal = textArr.join("d");
+        }else {
+            textArr[0] = 1;
+            textFinal = textArr.join("d");
+        }
+    }else if(divId == hitDiceIncrementsDict[1]) {
+        if(textArr[0] == 1) {
+            textArr[0] = 20;
+            textFinal = textArr.join("d");
+        }else if(textArr[0] <= 20) {
+            --textArr[0];
+            textFinal = textArr.join("d");
+        }else {
+            textArr[0] = 1;
+            textFinal = textArr.join("d");
+        }
+    }else if(divId == hitDiceIncrementsDict[2]) {
+        if(textArr[1] == diceFaces[diceFaces.length - 1]) {
+            textArr[1] = diceFaces[0];
+            textFinal = textArr.join("d");
+        }else if(parseInt(textArr[1]) >= parseInt(diceFaces[0]) ) {
+            placeIndex = (diceFaces.indexOf(textArr[1])+1);
+            textArr[1] = diceFaces[ placeIndex ];
+            textFinal = textArr.join("d");
+        }
+    }else if(divId == hitDiceIncrementsDict[3]) {
+        if(parseInt(textArr[1]) == parseInt(diceFaces[0]) ) {
+            textArr[1] = diceFaces[parseInt(diceFaces.length - 1)];
+            textFinal = textArr.join("d");
+        }else if(parseInt(textArr[1]) <= parseInt(diceFaces[parseInt(diceFaces.length - 1)]) ) {
+            placeIndex = (diceFaces.indexOf(textArr[1])-1);
+            textArr[1] = diceFaces[ placeIndex ];
+            textFinal = textArr.join("d");
+        }
     }
 
-
+    /* for(i = 0; i<diceFaces.length; i++){
+        console.log("Dice face: " + diceFaces[i]);
+    }; */
     console.log({"Id is: ": divId});
     console.log({textFinal});
     $("#total-hit-dice-input-value").val(textFinal);
 });
 
 
-/*
-$('.status').click(function(event) {
-    var status = $(this).attr('id');
-});
- */
 
 
 
@@ -381,7 +468,8 @@ $('.status').click(function(event) {
 
 var fileMenuOn = false;
 
-function turnFileMenuOn() {
+
+$("#file-btn").click( function(event) {
     if(fileMenuOn){
         fileMenuOn = false;
         $("#file-menu").stop(true,true).fadeOut("fast");
@@ -389,14 +477,13 @@ function turnFileMenuOn() {
         fileMenuOn = true;
         $("#file-menu").stop(true,true).show("slide", { direction: "left" }, 600);
     }
-};
+});
 
 
 
 var navigationOn = false;
 
-function menuDisplay()    
-{   
+$(".control_bar_display_btn").click( function(event) {
     if (navigationOn) {
         navigationOn = false;
         $(".main_control_bar").stop(true).fadeOut({duration: "500", queue: true});
@@ -412,7 +499,7 @@ function menuDisplay()
             $("#file-menu").stop(true).hide();
         }
     }
-};
+});
 
 
 
